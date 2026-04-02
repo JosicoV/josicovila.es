@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- TRANSLATE lang attribute -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume - José Vila</title> <!-- TRANSLATE title -->
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Fira Code', monospace;
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      display: grid;
+      grid-template-columns: 2.5rem auto;
+    }
+    .line-numbers {
+      background-color: #2d2d2d;
+      color: #858585;
+      padding: 1rem 0;
+      user-select: none;
+      text-align: center;
+    }
+    .line-numbers div {
+      line-height: 1.6rem;
+    }
+    .content {
+      padding: 1rem;
+      position: relative; /* For absolute positioning of language switcher */
+      line-height: 1.6rem;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    h1, .content h2 {
+      color: #4fc3f7;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+    .content h2 {
+      font-size: 1.6rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      color: #9cdcfe;
+    }
+    .photo-qr {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .photo-qr img {
+      border-radius: 0.5rem;
+      max-width: 150px;
+      height: auto;
+    }
+    .contact p {
+      margin: 0.3rem 0;
+    }
+    .content a {
+      color: #dcdcaa;
+      text-decoration: none;
+    }
+    .content a:hover {
+      text-decoration: underline;
+    }
+    .experience-entry {
+      margin-bottom: 1rem;
+    }
+    .experience-entry span:first-child { /* Date/Company line */
+      display: block;
+      color: #c586c0;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 10;
+    }
+    .language-switcher a img, .language-switcher span img {
+      width: 28px;
+      height: 20px;
+      vertical-align: middle;
+      border: 1px solid #3f3f3f;
+      border-radius: 3px;
+    }
+    .language-switcher a {
+      margin-left: 0.5rem;
+      display: inline-block;
+    }
+    .language-switcher span.current-lang {
+      margin-left: 0.5rem;
+      display: inline-block;
+    }
+    .language-switcher .current-lang img {
+      border: 1px solid #4fc3f7;
+    }
+
+    /* Intro Paragraph */
+    .intro-paragraph {
+      margin-top: 1rem;
+      color: #ce9178;
+      max-width: 700px;
+    }
+
+    /* Skills and Languages Section */
+    .skills-languages-container {
+      display: flex;
+      gap: 1rem; /* Spacing between columns and separator */
+      align-items: flex-start;
+      margin-bottom: 2rem; /* Consistent with .section */
+    }
+    .skills-column, .languages-column {
+      flex: 1;
+    }
+    .skill-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .skill-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 0.5rem;
+      flex-shrink: 0;
+    }
+    .skill-name {
+      width: 80px;
+      margin-right: 0.5rem;
+      flex-shrink: 0;
+    }
+    .skill-bar-container {
+      background-color: #444;
+      flex-grow: 1;
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .skill-bar-value {
+      height: 100%;
+      background-color: #4fc3f7;
+    }
+    .vertical-separator {
+      width: 1px;
+      background-color: #555;
+      align-self: stretch;
+    }
+
+    /* Media Query Adjustments */
+    @media (max-width: 768px) {
+      .skills-languages-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      .skills-column, .languages-column {
+        width: 90%;
+        max-width: 500px;
+      }
+      .vertical-separator {
+        display: none;
+      }
+      .photo-qr {
+        flex-direction: column;
+        align-items: center;
+      }
+      .photo-qr img {
+        max-width: 70%; /* Adjust as needed */
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="line-numbers">
+    <div>01</div><div>02</div><div>03</div><div>04</div><div>05</div>
+    <div>06</div><div>07</div><div>08</div><div>09</div><div>10</div>
+    <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
+    <div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
+    <div>21</div><div>22</div><div>23</div><div>24</div><div>25</div>
+    <div>26</div><div>27</div><div>28</div><div>29</div><div>30</div>
+    <div>31</div><div>32</div><div>33</div><div>34</div><div>35</div>
+    <div>36</div><div>37</div><div>38</div><div>39</div><div>40</div>
+    <div>41</div><div>42</div><div>43</div><div>44</div><div>45</div>
+    <div>46</div><div>47</div><div>48</div><div>49</div><div>50</div>
+    <div>51</div><div>52</div><div>53</div><div>54</div><div>55</div>
+    <div>56</div><div>57</div><div>58</div><div>59</div><div>60</div>
+    <div>61</div><div>62</div><div>63</div><div>64</div><div>65</div>
+  </div>
+  <div class="content">
+    <div class="language-switcher">
+      <a href="/curriculum/es/"><img src="/curri/es.png" alt="Español"></a>
+      <span class="current-lang"><img src="/curri/gb.png" alt="English"></span>
+    </div>
+
+    <div class="section">
+      <h1>José Vila</h1> <!-- TRANSLATE Name if needed, usually not -->
+      <p class="intro-paragraph">
+        <!-- TRANSLATE -->
+        Full Stack Web Developer with experience in creating modern web applications and designing intuitive interfaces. Ability to work in both frontend and backend, with special attention to user experience and performance. Versatile, self-taught, and with solid knowledge in JavaScript, PHP, and 3D web technologies.
+      </p>
+      <div class="photo-qr">
+        <img src="/curri/foto.jpg" alt="Photo of José Vila"> <!-- TRANSLATE alt text -->
+        <img src="/curri/qr-josicovila.png" alt="QR to José Vila's Resume"> <!-- TRANSLATE alt text -->
+      </div>
+    </div>
+
+    <div class="section contact">
+      <h2>Contact</h2> <!-- TRANSLATE -->
+      <p><strong>📞 Phone:</strong> 615382789</p> <!-- TRANSLATE "Teléfono" -->
+      <p><strong>📧 Email:</strong> <a href="mailto:info@josicovila.es">info@josicovila.es</a></p>
+      <p><strong>🌐 Web:</strong> <a href="https://josicovila.es">https://josicovila.es</a></p>
+      <p><strong>🔗 LinkedIn:</strong> <a href="https://linkedin.com/in/josico-vila/">linkedin.com/in/josico-vila</a></p>
+    </div>
+
+    <div class="section">
+      <h2>Experience</h2> <!-- TRANSLATE -->
+      <div class="experience-entry">
+        <span>2024 – Visual Technologies</span>
+        <!-- TRANSLATE -->
+        Development and design of the Inspector application and corporate web pages.<br>
+        <a href="https://visualtechnologies.eu">visualtechnologies.eu</a><br>
+        <a href="https://appinspector.es">appinspector.es</a><br>
+        <a href="https://demo.appinspector.es">demo.appinspector.es</a>
+      </div>
+      <div class="experience-entry">
+        <span>2023 – Camping La Estanca</span>
+        <!-- TRANSLATE -->
+        Receptionist (Spanish and English).
+      </div>
+      <div class="experience-entry">
+        <span>2015–2022 – ASAPME Bajo Aragón</span>
+        <!-- TRANSLATE -->
+        Receptionist at the Day Center.
+      </div>
+      <div class="experience-entry">
+        <span>2003–2008 – GNA Serveis Telematics</span>
+        <!-- TRANSLATE -->
+        Website programmer and SEO.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Academic Background</h2> <!-- TRANSLATE -->
+      <div class="experience-entry">
+        <span>University of Girona and UNED Girona (unfinished course)</span> <!-- TRANSLATE -->
+        <!-- TRANSLATE -->
+        Technical Engineering in Management Computing – Studies initiated and partially completed<br>
+        before starting my professional career.
+      </div>
+    </div>
+
+    <div class="skills-languages-container section">
+      <div class="skills-column">
+        <h2>Programming Languages</h2> <!-- TRANSLATE -->
+        <div class="skill-item">
+          <img src="/curri/html.png" alt="HTML" class="skill-icon">
+          <span class="skill-name">HTML</span>
+          <div class="skill-bar-container">
+            <div class="skill-bar-value" style="width: 100%;"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <img src="/curri/css.png" alt="CSS" class="skill-icon">
+          <span class="skill-name">CSS</span>
+          <div class="skill-bar-container">
+            <div class="skill-bar-value" style="width: 100%;"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <img src="/curri/js.png" alt="JavaScript" class="skill-icon">
+          <span class="skill-name">JS</span>
+          <div class="skill-bar-container">
+            <div class="skill-bar-value" style="width: 95%;"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <img src="/curri/php.png" alt="PHP" class="skill-icon">
+          <span class="skill-name">PHP</span>
+          <div class="skill-bar-container">
+            <div class="skill-bar-value" style="width: 80%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="vertical-separator"></div>
+      <div class="languages-column">
+        <h2>Languages</h2> <!-- TRANSLATE -->
+        <p><strong>Spanish:</strong> Native (100%)</p> <!-- TRANSLATE -->
+        <p><strong>English:</strong> Upper-intermediate (80%)</p> <!-- TRANSLATE -->
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Personal Projects</h2> <!-- TRANSLATE -->
+      <p style="max-width: 800px;">
+        <!-- TRANSLATE -->
+        While I have been unemployed, I have continued my training through short courses or self-study. In addition, I have developed personal projects:
+        <a href="https://josicovila.es">josicovila.es</a> and <a href="https://josicovila.com">josicovila.com</a>.
+        I believe that every good project needs good motivation, and for these, I have followed the principle of "Everything for and by my nephews and nieces."
+        In them, they have discovered my creative projects that I started in 2018: instrumental music composed with a computer (video games and cinema, 15 published albums),
+        short stories (15), and published books (4).
+      </p>
+    </div>
+  </div>
+</body>
+</html>

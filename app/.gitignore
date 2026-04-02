@@ -1,0 +1,10 @@
+# Local dev artifacts
+public/hot
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.log

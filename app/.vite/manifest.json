@@ -1,0 +1,56 @@
+{
+  "node_modules/wavesurfer.js/dist/wavesurfer.esm.js": {
+    "file": "assets/wavesurfer.esm-jFUz3WWG.js",
+    "name": "wavesurfer.esm",
+    "src": "node_modules/wavesurfer.js/dist/wavesurfer.esm.js",
+    "isDynamicEntry": true
+  },
+  "src/CRISTAL/js/app.js": {
+    "file": "assets/app-Diiq_LMy.js",
+    "name": "app",
+    "src": "src/CRISTAL/js/app.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ]
+  },
+  "src/LIBROS/js/carruselLibros.js": {
+    "file": "assets/carruselLibros-BCttP92M.js",
+    "name": "carruselLibros",
+    "src": "src/LIBROS/js/carruselLibros.js",
+    "isDynamicEntry": true
+  },
+  "src/RELATOS/js/carrusel.js": {
+    "file": "assets/carrusel-BGSmweJR.js",
+    "name": "carrusel",
+    "src": "src/RELATOS/js/carrusel.js",
+    "isDynamicEntry": true
+  },
+  "src/RELATOS/js/relato.js": {
+    "file": "assets/relato-Bl2ND086.js",
+    "name": "relato",
+    "src": "src/RELATOS/js/relato.js",
+    "isDynamicEntry": true
+  },
+  "src/main.js": {
+    "file": "assets/main-Bf2LDCjT.js",
+    "name": "main",
+    "src": "src/main.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/CRISTAL/js/app.js",
+      "node_modules/wavesurfer.js/dist/wavesurfer.esm.js",
+      "src/RELATOS/js/relato.js",
+      "src/RELATOS/js/carrusel.js",
+      "src/LIBROS/js/carruselLibros.js"
+    ],
+    "css": [
+      "assets/main-DS78lYau.css"
+    ]
+  },
+  "src/styles.css": {
+    "file": "assets/main-DS78lYau.css",
+    "src": "src/main.js",
+    "isEntry": true
+  }
+}

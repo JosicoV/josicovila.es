@@ -1,0 +1,19 @@
+# Persistent data
+/data/cristal-musica/
+/data/relatos-audios/
+/data/relatos-videos/
+/data/relatos-pdf/
+/data/blog-media/
+/data/media-videos/
+/data/media-sounds/
+/data/intro-video/
+/data/intro-mp3/
+/data/js-model/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.log

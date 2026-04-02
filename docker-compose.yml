@@ -1,0 +1,21 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: josicovila-es-web
+    ports:
+      - "8081:80"
+    volumes:
+      - ./app:/var/www/html
+      - ./data/cristal-musica:/var/www/html/CRISTAL/musica
+      - ./data/relatos-audios:/var/www/html/RELATOS/relatos/audios
+      - ./data/relatos-videos:/var/www/html/RELATOS/relatos/videos
+      - ./data/relatos-pdf:/var/www/html/RELATOS/relatos/pdf
+      - ./data/blog-media:/var/www/html/BLOG_media
+      - ./data/media-videos:/var/www/html/media/videos
+      - ./data/media-sounds:/var/www/html/media/sounds
+      - ./data/intro-video:/var/www/html/intro/video
+      - ./data/intro-mp3:/var/www/html/intro/mp3
+      - ./data/js-model:/var/www/html/js/model
+    restart: unless-stopped

@@ -1,0 +1,58 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    Options -MultiViews
+
+    # Opcional: Establecer la base si tu proyecto no está en la raíz del dominio
+    RewriteBase /
+
+    # --- Redirigir index-juego.php a /mundo3D/ ---
+    # Si alguien accede directamente al archivo PHP, redirigir a la URL amigable
+    RewriteCond %{THE_REQUEST} \s/index-juego\.php[\s?] [NC]
+    RewriteRule ^index-juego\.php$ /mundo3D/ [R=301,L]
+
+    # --- Reescribir /mundo3D/ para que sirva index-juego.php ---
+    # Ignora si es un archivo o directorio real (aunque /mundo3D/ no debería serlo)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^mundo3D/?$ index-juego.php [L,QSA]
+    
+    
+
+    # Redirigir peticiones a /blog/slug a index.php?post=slug
+    # Ignora si es un archivo o directorio real
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^blog/([a-zA-Z0-9-]+)/?$ index.php?post=$1 [L,QSA]
+    
+    
+    # Evitar reescribir archivos y directorios existentes
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # --- REGLA PARA CURRICULUM ---
+    # Permite acceder a curriculum.html mediante la URL /curriculum/ o /curriculum
+    # Asume que curriculum.html existe en la raíz del sitio.
+    # La bandera [NC] hace que la regla no distinga entre mayúsculas y minúsculas (ej. /Curriculum/ también funcionaría).
+    RewriteRule ^curriculum/es/?$ curriculum_es.html [L,NC]
+
+    # Permite acceder a curriculum_en.html mediante /resume/en/ o /resume/en
+    RewriteRule ^resume/en/?$ curriculum_en.html [L,NC]
+
+    # Regla para posts del blog: /blog/nombre-del-post/
+    RewriteRule ^blog/([^/]+)/?$ index.php?post=$1 [L,QSA]
+
+    # Regla para tags del blog: /blog/tag/nombre-del-tag/
+    RewriteRule ^blog/tag/([^/]+)/?$ index.php?tag=$1 [L,QSA]
+
+    # Regla para la página principal del blog: /blog/ (o /blog)
+    RewriteRule ^blog/?$ index.php [L,QSA]
+
+
+    # --- NUEVO: Redirigir todo lo demás (404) a la raíz ---
+    # Ignora si es un archivo o directorio real (ya cubierto arriba, pero por seguridad) # <-- Comentado temporalmente
+    #RewriteCond %{REQUEST_FILENAME} !-f # <-- Comentado temporalmente
+    #RewriteCond %{REQUEST_FILENAME} !-d # <-- Comentado temporalmente
+    #RewriteRule ^.*$ / [R=301,L] # <-- Comentado temporalmente
+
+</IfModule>
