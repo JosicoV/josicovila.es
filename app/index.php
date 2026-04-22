@@ -363,7 +363,9 @@ $postDateIso= htmlspecialchars($currentPost['date'] ?? '');
     <meta itemprop="datePublished" content="<?= $postDateIso ?>">
     <meta itemprop="author"        content="Josico Vila">
 
-    <?= $currentPost['content'] ?>
+    <div class="post-content" id="post-content">
+      <?= $currentPost['content'] ?>
+    </div>
 
     <!-- Tags -->
     <?php if (!empty($currentPost['tags'])): ?>
@@ -604,36 +606,76 @@ window.addEventListener('scroll', () => {
   if (total > 0) bar.style.width = Math.min((scrolled / total) * 100, 100) + '%';
 }, { passive: true });
 
-/* Build TOC from h2/h3 in post body */
-const headings = document.querySelectorAll('.post-body h2[id], .post-body h3[id]');
-const tocList  = document.getElementById('toc-list');
-if (tocList && headings.length) {
-  /* Auto-assign IDs if missing */
-  document.querySelectorAll('.post-body h2, .post-body h3').forEach((h, i) => {
-    if (!h.id) h.id = 'h-' + i;
-  });
-  const hs = document.querySelectorAll('.post-body h2, .post-body h3');
-  hs.forEach(h => {
+/* Build TOC from post content h2/h3 */
+const tocList = document.getElementById('toc-list');
+const postContent = document.getElementById('post-content');
+
+if (tocList && postContent) {
+  const hs = Array.from(postContent.querySelectorAll('h2, h3'))
+    .filter((heading) => heading.textContent.trim().length > 0);
+
+  const slugifyHeading = (text) => text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+
+  hs.forEach((heading, index) => {
+    if (!heading.id) {
+      const baseId = slugifyHeading(heading.textContent) || `seccion-${index + 1}`;
+      let nextId = baseId;
+      let suffix = 2;
+      while (document.getElementById(nextId)) {
+        nextId = `${baseId}-${suffix++}`;
+      }
+      heading.id = nextId;
+    }
+
     const li = document.createElement('li');
-    const a  = document.createElement('a');
-    a.href        = '#' + h.id;
-    a.textContent = h.textContent.replace(/^[^\w\s]+\s*/, ''); /* strip icon chars */
+    li.className = `toc-item toc-item--${heading.tagName.toLowerCase()}`;
+
+    const a = document.createElement('a');
+    a.href = `#${heading.id}`;
+    a.textContent = heading.textContent.replace(/^[^\p{L}\p{N}]+/u, '').trim();
+    a.addEventListener('click', (event) => {
+      event.preventDefault();
+      heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', `#${heading.id}`);
+    });
+
     li.appendChild(a);
     tocList.appendChild(li);
   });
 
-  /* Active link on scroll */
-  const tocLinks = tocList.querySelectorAll('a');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        tocLinks.forEach(a => a.classList.remove('active'));
-        const active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
-        if (active) active.classList.add('active');
+  if (hs.length === 0) {
+    const empty = document.createElement('li');
+    empty.className = 'toc-empty';
+    empty.textContent = 'Este artículo no tiene subtítulos.';
+    tocList.appendChild(empty);
+  } else {
+    const tocLinks = Array.from(tocList.querySelectorAll('a'));
+
+    const setActiveHeading = (heading) => {
+      tocLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${heading.id}`));
+      hs.forEach((item) => item.classList.toggle('is-current-section', item === heading));
+    };
+
+    setActiveHeading(hs[0]);
+
+    const obs = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+      if (visible.length > 0) {
+        setActiveHeading(visible[0].target);
       }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
-  hs.forEach(h => obs.observe(h));
+    }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, 1] });
+
+    hs.forEach((heading) => obs.observe(heading));
+  }
 }
 </script>
 <?php endif; ?>

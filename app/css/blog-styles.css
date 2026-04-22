@@ -397,6 +397,7 @@ h1.post-title {
   font-family: var(--ff-display); letter-spacing: 0.01em;
   color: var(--text); margin: 3rem 0 1.2rem;
   scroll-margin-top: 88px;
+  transition: color 0.22s ease, text-shadow 0.22s ease;
 }
 .post-body h2 {
   font-size: 1.65rem; font-weight: 700; line-height: 1.2;
@@ -410,6 +411,11 @@ h1.post-title {
 .post-body h3::before {
   content: ''; display: block; width: 4px; height: 1.1em;
   background: var(--gold); flex-shrink: 0;
+}
+.post-body h2.is-current-section,
+.post-body h3.is-current-section {
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(224, 161, 45, 0.18);
 }
 
 .post-body ul, .post-body ol {
@@ -542,6 +548,10 @@ h1.post-title {
 .post-aside .toc-label::before { content: ''; width: 20px; height: 1px; background: var(--border); }
 .toc-list { list-style: none; }
 .toc-list li { border-left: 1px solid var(--border); }
+.toc-list .toc-item--h3 a {
+  padding-left: 1.4rem;
+  font-size: 0.76rem;
+}
 .toc-list a {
   display: block; padding: 0.4rem 0.8rem;
   color: var(--muted); text-decoration: none;
@@ -550,6 +560,11 @@ h1.post-title {
   border-left: 2px solid transparent; margin-left: -1px;
 }
 .toc-list a:hover, .toc-list a.active { color: var(--gold); border-color: var(--gold); }
+.toc-empty {
+  color: var(--muted);
+  font-size: 0.82rem;
+  padding: 0.25rem 0.8rem;
+}
 
 /* ══════════════════════════════════════════════════════
    RELATED ARTICLES

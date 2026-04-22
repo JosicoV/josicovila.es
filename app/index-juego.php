@@ -826,6 +826,795 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
       }
       .musica, .todoRelatos, .todoLibros { z-index: 3000 !important; }
 
+      .todoRelatos {
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        padding: clamp(1rem, 2vw, 1.75rem) !important;
+        box-sizing: border-box !important;
+        background:
+          radial-gradient(circle at top left, oklch(34% 0.12 18 / 0.24), transparent 34%),
+          radial-gradient(circle at 82% 18%, oklch(58% 0.13 68 / 0.22), transparent 28%),
+          linear-gradient(180deg, oklch(8% 0.03 250 / 0.96), oklch(11% 0.03 255 / 0.96)) !important;
+        overflow: hidden !important;
+      }
+      .todoRelatos::before,
+      .todoRelatos::after {
+        content: "" !important;
+        position: absolute !important;
+        pointer-events: none !important;
+        z-index: 0 !important;
+      }
+      .todoRelatos::before {
+        top: -14rem !important;
+        right: -7rem !important;
+        width: 28rem !important;
+        height: 28rem !important;
+        border-radius: 50% !important;
+        background: radial-gradient(circle, oklch(72% 0.14 68 / 0.16), transparent 68%) !important;
+        filter: blur(6px) !important;
+      }
+      .todoRelatos::after {
+        left: 6% !important;
+        bottom: -10rem !important;
+        width: 32rem !important;
+        height: 20rem !important;
+        border-radius: 999px !important;
+        background: radial-gradient(circle, oklch(55% 0.12 28 / 0.18), transparent 70%) !important;
+      }
+      .todoRelatos .salirRelatos {
+        top: 1.1rem !important;
+        right: 1.2rem !important;
+      }
+      .todoRelatos .salirRelatos img {
+        width: clamp(90px, 10vw, 150px) !important;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35)) !important;
+      }
+      .todoRelatos .relatos {
+        position: relative !important;
+        z-index: 1 !important;
+        width: 100% !important;
+        height: 100% !important;
+        top: 0 !important;
+        padding: clamp(3.8rem, 8vh, 5.4rem) 0 0 !important;
+        box-sizing: border-box !important;
+      }
+      .todoRelatos .wrapperCarrusel {
+        align-items: stretch !important;
+        justify-content: center !important;
+        padding-inline: clamp(1rem, 2vw, 1.5rem) !important;
+      }
+      .todoRelatos .wrapperCarrusel > h1 {
+        display: none !important;
+      }
+      .jv-stories-shell {
+        display: grid !important;
+        grid-template-columns: minmax(240px, 320px) minmax(0, 1fr) !important;
+        gap: clamp(1.25rem, 2vw, 2rem) !important;
+        width: 100% !important;
+      }
+      .jv-stories-header {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-self: stretch !important;
+        min-height: 0 !important;
+        padding: clamp(1.2rem, 2vw, 1.8rem) !important;
+        color: var(--jv-text) !important;
+        background: linear-gradient(180deg, oklch(12% 0.03 255 / 0.92), oklch(10% 0.02 255 / 0.78)) !important;
+        border: 1px solid oklch(52% 0.12 68 / 0.28) !important;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.03), 0 20px 50px rgba(0,0,0,.22) !important;
+        backdrop-filter: blur(14px) !important;
+      }
+      .jv-stories-header__eyebrow {
+        font: 700 0.72rem/1 var(--jv-ff-m) !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        color: var(--jv-gold) !important;
+        margin-bottom: 0.95rem !important;
+      }
+      .jv-stories-header h1 {
+        margin: 0 0 1rem !important;
+        font: 900 clamp(2.2rem, 4vw, 4.25rem)/0.92 var(--jv-ff-d) !important;
+        letter-spacing: -0.04em !important;
+        color: #fff7eb !important;
+        text-transform: none !important;
+        position: static !important;
+        transform: none !important;
+      }
+      .jv-stories-header p {
+        margin: 0 !important;
+        color: rgba(244,239,233,.72) !important;
+        font: 400 1rem/1.8 var(--jv-ff) !important;
+        max-width: 28rem !important;
+      }
+      .jv-stories-carousel {
+        width: 100% !important;
+        height: min(100%, 760px) !important;
+        max-width: none !important;
+        border: 1px solid oklch(45% 0.08 68 / 0.22) !important;
+        border-radius: 28px !important;
+        background: linear-gradient(180deg, oklch(12% 0.03 255 / 0.92), oklch(9% 0.02 255 / 0.9)) !important;
+        box-shadow: 0 22px 60px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.04) !important;
+        backdrop-filter: blur(18px) !important;
+      }
+      .todoRelatos .backdrop-blur {
+        background-color: transparent !important;
+      }
+      .todoRelatos .grande {
+        height: calc(100% - 7.5rem) !important;
+      }
+      .todoRelatos .item.jv-story-card {
+        color: var(--jv-text) !important;
+        height: 100% !important;
+        padding: clamp(1.3rem, 2vw, 1.8rem) !important;
+        gap: clamp(1rem, 2vw, 1.6rem) !important;
+        align-items: stretch !important;
+      }
+      .jv-story-card__copy,
+      .jv-story-card__media {
+        min-width: 0 !important;
+      }
+      .jv-story-card__copy {
+        gap: clamp(1rem, 2vw, 1.5rem) !important;
+      }
+      .jv-story-card__cover-wrap {
+        width: min(44%, 220px) !important;
+        aspect-ratio: 0.72 !important;
+        flex-shrink: 0 !important;
+        padding: 0.6rem !important;
+        border-radius: 24px !important;
+        background: linear-gradient(180deg, oklch(16% 0.03 255 / 0.86), oklch(10% 0.02 255 / 0.86)) !important;
+        border: 1px solid oklch(52% 0.12 68 / 0.24) !important;
+        box-shadow: 0 16px 32px rgba(0,0,0,.26) !important;
+      }
+      .jv-story-card__cover {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 18px !important;
+      }
+      .jv-story-card__meta {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        min-width: 0 !important;
+      }
+      .jv-story-card__eyebrow {
+        color: var(--jv-gold) !important;
+        font: 700 0.7rem/1 var(--jv-ff-m) !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        margin-bottom: 0.85rem !important;
+      }
+      .todoRelatos .info1 h2 {
+        margin: 0 0 0.9rem !important;
+        display: block !important;
+        font: 900 clamp(1.8rem, 3vw, 3rem)/1 var(--jv-ff-d) !important;
+        color: #fff8ec !important;
+      }
+      .todoRelatos .info1 p {
+        margin: 0 !important;
+        color: rgba(244,239,233,.72) !important;
+        font: 400 1rem/1.8 var(--jv-ff) !important;
+      }
+      .jv-story-card__actions {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 0.85rem !important;
+        margin-top: 1.35rem !important;
+      }
+      .jv-story-card__action {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-width: 180px !important;
+        padding: 0.9rem 1.2rem !important;
+        border-radius: 999px !important;
+        font: 800 0.83rem/1 var(--jv-ff) !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+        transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease !important;
+      }
+      .jv-story-card__action:hover {
+        transform: translateY(-2px) !important;
+      }
+      .jv-story-card__action--online {
+        color: #081015 !important;
+        background: linear-gradient(135deg, #f2b14f, #ffcf78) !important;
+        box-shadow: 0 16px 30px rgba(242,177,79,.22) !important;
+      }
+      .jv-story-card__action--pdf {
+        color: #fff6ea !important;
+        border: 1px solid oklch(58% 0.12 42 / 0.48) !important;
+        background: linear-gradient(135deg, oklch(37% 0.12 28 / 0.88), oklch(31% 0.11 22 / 0.88)) !important;
+        box-shadow: 0 14px 26px rgba(124,54,36,.18) !important;
+      }
+      .jv-story-card__media {
+        border-left: 1px solid rgba(255,255,255,.08) !important;
+        padding-left: clamp(1rem, 2vw, 1.6rem) !important;
+      }
+      .jv-story-card__video-shell {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.9rem !important;
+        padding: clamp(1rem, 2vw, 1.25rem) !important;
+        border-radius: 24px !important;
+        background: linear-gradient(180deg, oklch(11% 0.025 255 / 0.86), oklch(8% 0.02 255 / 0.88)) !important;
+        border: 1px solid rgba(255,255,255,.06) !important;
+      }
+      .jv-story-card__video-label {
+        color: rgba(244,239,233,.66) !important;
+        font: 700 0.72rem/1 var(--jv-ff-m) !important;
+        letter-spacing: 0.16em !important;
+        text-transform: uppercase !important;
+      }
+      .todoRelatos .info2 video {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 280px !important;
+        object-fit: cover !important;
+        border-radius: 18px !important;
+        box-shadow: 0 18px 34px rgba(0,0,0,.25) !important;
+      }
+      .jv-stories-control {
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0.8rem 1.4rem 1rem !important;
+        gap: 1rem !important;
+      }
+      .jv-stories-control__hint {
+        color: rgba(244,239,233,.56) !important;
+        font: 400 0.94rem/1.5 var(--jv-ff) !important;
+      }
+      .todoRelatos .controlesRelatos {
+        width: auto !important;
+        padding: 0 !important;
+        gap: 0.7rem !important;
+      }
+      .todoRelatos .controlesRelatos img {
+        height: 42px !important;
+        padding: 0.45rem !important;
+        background: rgba(255,255,255,.05) !important;
+        border: 1px solid rgba(255,255,255,.08) !important;
+      }
+      .todoRelatos .puntos {
+        width: auto !important;
+        padding: 0 !important;
+        justify-content: flex-end !important;
+        gap: 0.45rem !important;
+      }
+      .todoRelatos .punto {
+        width: 14px !important;
+        height: 14px !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        background: rgba(255,255,255,.14) !important;
+      }
+      .todoRelatos .punto.activo {
+        width: 36px !important;
+        border-radius: 999px !important;
+        background: linear-gradient(90deg, #f2b14f, #ffcf78) !important;
+      }
+      .todoRelatos .wrapperRelato {
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        padding: clamp(1rem, 3vw, 2rem) !important;
+        box-sizing: border-box !important;
+        background: rgba(4, 7, 16, 0.58) !important;
+        backdrop-filter: blur(10px) !important;
+      }
+      .todoRelatos .relato.jv-story-detail {
+        width: min(1080px, 100%) !important;
+        max-width: 1080px !important;
+        height: min(92vh, 900px) !important;
+        background: radial-gradient(circle at top right, oklch(60% 0.13 68 / 0.16), transparent 28%), linear-gradient(180deg, rgba(255,250,243,.98), rgba(248,239,226,.96)) !important;
+        border-radius: 30px !important;
+        border: 1px solid rgba(168, 120, 58, 0.18) !important;
+        box-shadow: 0 30px 70px rgba(0,0,0,.28) !important;
+        padding: clamp(1.2rem, 2vw, 1.8rem) !important;
+      }
+      .jv-story-detail__control {
+        gap: 1rem !important;
+        align-items: stretch !important;
+        border-radius: 24px !important;
+        padding: 1rem !important;
+        background: linear-gradient(135deg, rgba(17,23,39,.9), rgba(35,21,17,.78)) !important;
+        box-shadow: 0 18px 36px rgba(30, 41, 59, 0.15) !important;
+      }
+      .jv-story-detail__audio {
+        align-items: center !important;
+        gap: 1rem !important;
+      }
+      .jv-story-detail__transport {
+        width: 92px !important;
+        min-width: 92px !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .jv-story-detail__wave {
+        flex: 1 !important;
+        min-width: 0 !important;
+      }
+      .jv-story-detail__pdf {
+        display: flex !important;
+        align-items: center !important;
+      }
+      .jv-story-detail__pdf-link {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        white-space: nowrap !important;
+        padding: 0.95rem 1.25rem !important;
+        border-radius: 999px !important;
+        background: linear-gradient(135deg, #9f3b24, #cf5a31) !important;
+        color: #fff7ed !important;
+        text-decoration: none !important;
+        font: 800 0.82rem/1 var(--jv-ff) !important;
+        letter-spacing: 0.09em !important;
+        text-transform: uppercase !important;
+        box-shadow: 0 16px 30px rgba(159,59,36,.22) !important;
+      }
+      .jv-story-detail__body {
+        padding: 1.5rem 0.4rem 0.5rem !important;
+      }
+      .jv-story-detail__hero {
+        max-width: 50rem !important;
+        margin-bottom: 1.5rem !important;
+      }
+      .jv-story-detail__eyebrow {
+        color: #b66a30 !important;
+        font: 800 0.74rem/1 var(--jv-ff-m) !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        margin-bottom: 0.8rem !important;
+      }
+      .jv-story-detail h1 {
+        margin: 0 0 0.75rem !important;
+        color: #1f1720 !important;
+        font: 900 clamp(2rem, 4vw, 3.6rem)/0.96 var(--jv-ff-d) !important;
+      }
+      .jv-story-detail__intro {
+        margin: 0 !important;
+        color: rgba(31,23,32,.72) !important;
+        font: 400 1.05rem/1.8 var(--jv-ff) !important;
+      }
+      .jv-story-detail__prose {
+        color: #2f2730 !important;
+        font: 400 1.02rem/1.95 Georgia, serif !important;
+      }
+      .jv-story-detail__prose p {
+        margin: 0 !important;
+      }
+      .jv-story-detail__signoff {
+        margin: 2rem 0 0 !important;
+        color: #8a552e !important;
+        font: italic 500 1rem/1.9 Georgia, serif !important;
+      }
+      @media (max-width: 1100px) {
+        .jv-stories-shell {
+          grid-template-columns: 1fr !important;
+        }
+        .jv-stories-header {
+          max-width: none !important;
+        }
+      }
+      @media (max-width: 860px) {
+        .todoRelatos {
+          overflow-y: auto !important;
+        }
+        .todoRelatos .relatos {
+          height: auto !important;
+          min-height: 100% !important;
+          padding-top: 4.8rem !important;
+          padding-bottom: 1rem !important;
+        }
+        .todoRelatos .grande {
+          height: auto !important;
+        }
+        .todoRelatos .item.jv-story-card {
+          flex-direction: column !important;
+          height: auto !important;
+        }
+        .jv-story-card__media {
+          border-left: 0 !important;
+          padding-left: 0 !important;
+        }
+        .jv-story-card__cover-wrap {
+          width: min(52%, 220px) !important;
+        }
+        .jv-stories-control {
+          flex-wrap: wrap !important;
+        }
+        .todoRelatos .wrapperRelato {
+          align-items: flex-start !important;
+          overflow-y: auto !important;
+        }
+        .todoRelatos .relato.jv-story-detail {
+          height: auto !important;
+          min-height: calc(100vh - 2rem) !important;
+        }
+        .jv-story-detail__audio {
+          flex-wrap: wrap !important;
+        }
+        .jv-story-detail__transport {
+          width: auto !important;
+          min-width: 0 !important;
+        }
+        .jv-story-detail__pdf {
+          width: 100% !important;
+        }
+        .jv-story-detail__pdf-link {
+          width: 100% !important;
+        }
+      }
+      @media (max-width: 600px) {
+        .todoRelatos {
+          padding: 0.8rem !important;
+        }
+        .todoRelatos .salirRelatos {
+          top: auto !important;
+          bottom: 0.6rem !important;
+          right: 0.6rem !important;
+        }
+        .todoRelatos .relatos {
+          padding-top: 1rem !important;
+          padding-bottom: 5.2rem !important;
+        }
+        .jv-stories-header h1 {
+          font-size: clamp(2rem, 10vw, 2.8rem) !important;
+        }
+        .jv-stories-header p,
+        .todoRelatos .info1 p,
+        .jv-story-detail__intro,
+        .jv-story-detail__prose {
+          font-size: 0.95rem !important;
+        }
+        .jv-story-card__actions,
+        .todoRelatos .puntos {
+          width: 100% !important;
+        }
+        .jv-story-card__action {
+          width: 100% !important;
+          min-width: 0 !important;
+        }
+        .todoRelatos .controlesRelatos,
+        .todoRelatos .puntos {
+          justify-content: center !important;
+        }
+      }
+
+      .todoLibros {
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        padding: clamp(1rem, 2vw, 1.75rem) !important;
+        box-sizing: border-box !important;
+        background:
+          radial-gradient(circle at top right, oklch(58% 0.11 70 / 0.18), transparent 30%),
+          radial-gradient(circle at 12% 80%, oklch(52% 0.09 40 / 0.16), transparent 30%),
+          linear-gradient(180deg, oklch(10% 0.025 255 / 0.97), oklch(12% 0.03 35 / 0.95)) !important;
+        overflow: hidden !important;
+      }
+      .todoLibros::before,
+      .todoLibros::after {
+        content: "" !important;
+        position: absolute !important;
+        pointer-events: none !important;
+        z-index: 0 !important;
+      }
+      .todoLibros::before {
+        top: -10rem !important;
+        left: -4rem !important;
+        width: 24rem !important;
+        height: 24rem !important;
+        border-radius: 50% !important;
+        background: radial-gradient(circle, oklch(72% 0.13 75 / 0.14), transparent 70%) !important;
+      }
+      .todoLibros::after {
+        right: 8% !important;
+        bottom: -9rem !important;
+        width: 30rem !important;
+        height: 18rem !important;
+        border-radius: 999px !important;
+        background: radial-gradient(circle, oklch(42% 0.1 30 / 0.16), transparent 72%) !important;
+      }
+      .todoLibros .salirLibros {
+        top: 1.1rem !important;
+        right: 1.2rem !important;
+      }
+      .todoLibros .salirLibros img {
+        width: clamp(90px, 10vw, 150px) !important;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35)) !important;
+      }
+      .todoLibros .libros {
+        position: relative !important;
+        z-index: 1 !important;
+        width: 100% !important;
+        height: 100% !important;
+        top: 0 !important;
+        padding: clamp(3.8rem, 8vh, 5.4rem) 0 0 !important;
+        box-sizing: border-box !important;
+      }
+      .todoLibros .wrapperCarrusel {
+        align-items: stretch !important;
+        justify-content: center !important;
+        padding-inline: clamp(1rem, 2vw, 1.5rem) !important;
+      }
+      .todoLibros .wrapperCarrusel > h1 {
+        display: none !important;
+      }
+      .jv-books-shell {
+        display: grid !important;
+        grid-template-columns: minmax(250px, 340px) minmax(0, 1fr) !important;
+        gap: clamp(1.25rem, 2vw, 2rem) !important;
+        width: 100% !important;
+      }
+      .jv-books-header {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-self: stretch !important;
+        min-height: 0 !important;
+        padding: clamp(1.2rem, 2vw, 1.85rem) !important;
+        color: var(--jv-text) !important;
+        background: linear-gradient(180deg, oklch(13% 0.03 255 / 0.9), oklch(14% 0.03 40 / 0.82)) !important;
+        border: 1px solid oklch(55% 0.1 68 / 0.24) !important;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.03), 0 20px 50px rgba(0,0,0,.24) !important;
+        backdrop-filter: blur(14px) !important;
+      }
+      .jv-books-header__eyebrow {
+        font: 700 0.72rem/1 var(--jv-ff-m) !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        color: #efbc68 !important;
+        margin-bottom: 0.95rem !important;
+      }
+      .jv-books-header h1 {
+        margin: 0 0 1rem !important;
+        font: 900 clamp(2.2rem, 4vw, 4.3rem)/0.92 var(--jv-ff-d) !important;
+        letter-spacing: -0.04em !important;
+        color: #fff8ef !important;
+        text-transform: none !important;
+        position: static !important;
+        transform: none !important;
+      }
+      .jv-books-header p {
+        margin: 0 !important;
+        color: rgba(244,239,233,.72) !important;
+        font: 400 1rem/1.8 var(--jv-ff) !important;
+        max-width: 30rem !important;
+      }
+      .jv-books-carousel {
+        width: 100% !important;
+        height: min(100%, 760px) !important;
+        max-width: none !important;
+        border: 1px solid oklch(45% 0.08 68 / 0.2) !important;
+        border-radius: 30px !important;
+        background:
+          radial-gradient(circle at top center, rgba(255,255,255,.04), transparent 30%),
+          linear-gradient(180deg, oklch(12% 0.03 255 / 0.92), oklch(13% 0.03 32 / 0.92)) !important;
+        box-shadow: 0 24px 64px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.04) !important;
+        backdrop-filter: blur(18px) !important;
+      }
+      .todoLibros .backdrop-blur {
+        background-color: transparent !important;
+      }
+      .todoLibros .grandeLibros {
+        height: calc(100% - 7.5rem) !important;
+      }
+      .todoLibros .itemLibros.jv-book-card {
+        color: var(--jv-text) !important;
+        height: 100% !important;
+        padding: clamp(1.3rem, 2vw, 1.8rem) !important;
+        gap: clamp(1rem, 2vw, 1.6rem) !important;
+        align-items: stretch !important;
+      }
+      .jv-book-card__copy,
+      .jv-book-card__media {
+        min-width: 0 !important;
+      }
+      .jv-book-card__copy {
+        gap: clamp(1rem, 2vw, 1.5rem) !important;
+        padding: clamp(1rem, 2vw, 1.4rem) !important;
+        border-radius: 28px !important;
+        background-color: rgba(17, 12, 14, 0.38) !important;
+        background-blend-mode: screen !important;
+        border: 1px solid rgba(255,255,255,.06) !important;
+      }
+      .jv-book-card__cover-wrap {
+        width: min(42%, 220px) !important;
+        aspect-ratio: 0.68 !important;
+        flex-shrink: 0 !important;
+        padding: 0.7rem !important;
+        border-radius: 24px !important;
+        background: linear-gradient(180deg, rgba(19,15,18,.82), rgba(10,8,14,.88)) !important;
+        border: 1px solid rgba(241,189,108,.22) !important;
+        box-shadow: 0 18px 36px rgba(0,0,0,.3) !important;
+      }
+      .jv-book-card__cover {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 18px !important;
+      }
+      .jv-book-card__meta {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        min-width: 0 !important;
+      }
+      .jv-book-card__eyebrow {
+        color: #efbc68 !important;
+        font: 700 0.7rem/1 var(--jv-ff-m) !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        margin-bottom: 0.85rem !important;
+      }
+      .todoLibros .info1 h2 {
+        margin: 0 0 0.9rem !important;
+        display: block !important;
+        font: 900 clamp(1.7rem, 2.9vw, 2.85rem)/1.02 var(--jv-ff-d) !important;
+        color: #fff8ee !important;
+      }
+      .todoLibros .info1 p {
+        margin: 0 !important;
+        color: rgba(244,239,233,.74) !important;
+        font: 400 1rem/1.8 var(--jv-ff) !important;
+      }
+      .jv-book-card__badge {
+        display: inline-flex !important;
+        align-items: center !important;
+        width: fit-content !important;
+        margin-top: 1.2rem !important;
+        padding: 0.7rem 1rem !important;
+        border-radius: 999px !important;
+        background: linear-gradient(135deg, rgba(228,176,86,.18), rgba(153,79,36,.25)) !important;
+        border: 1px solid rgba(239,188,104,.24) !important;
+        color: #fff0d6 !important;
+        font: 800 0.78rem/1 var(--jv-ff) !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+      }
+      .jv-book-card__media {
+        border-left: 1px solid rgba(255,255,255,.08) !important;
+        padding-left: clamp(1rem, 2vw, 1.6rem) !important;
+      }
+      .jv-book-card__video-shell {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.9rem !important;
+        padding: clamp(1rem, 2vw, 1.25rem) !important;
+        border-radius: 24px !important;
+        background: linear-gradient(180deg, rgba(14,18,29,.88), rgba(28,16,12,.86)) !important;
+        border: 1px solid rgba(255,255,255,.06) !important;
+      }
+      .jv-book-card__video-label {
+        color: rgba(244,239,233,.66) !important;
+        font: 700 0.72rem/1 var(--jv-ff-m) !important;
+        letter-spacing: 0.16em !important;
+        text-transform: uppercase !important;
+      }
+      .todoLibros .info2 .video {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 320px !important;
+        border: 0 !important;
+        border-radius: 18px !important;
+        box-shadow: 0 18px 34px rgba(0,0,0,.25) !important;
+      }
+      .jv-books-control {
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0.8rem 1.4rem 1rem !important;
+        gap: 1rem !important;
+      }
+      .jv-books-control__hint {
+        color: rgba(244,239,233,.56) !important;
+        font: 400 0.94rem/1.5 var(--jv-ff) !important;
+      }
+      .todoLibros .controlesLibros {
+        width: auto !important;
+        padding: 0 !important;
+        gap: 0.7rem !important;
+      }
+      .todoLibros .controlesLibros img {
+        height: 42px !important;
+        padding: 0.45rem !important;
+        background: rgba(255,255,255,.05) !important;
+        border: 1px solid rgba(255,255,255,.08) !important;
+      }
+      .todoLibros .puntos {
+        width: auto !important;
+        padding: 0 !important;
+        justify-content: flex-end !important;
+        gap: 0.45rem !important;
+      }
+      .todoLibros .puntoLibros {
+        width: 14px !important;
+        height: 14px !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        background: rgba(255,255,255,.14) !important;
+      }
+      .todoLibros .puntoLibros.activo {
+        width: 36px !important;
+        border-radius: 999px !important;
+        background: linear-gradient(90deg, #efbc68, #ffd694) !important;
+      }
+      @media (max-width: 1100px) {
+        .jv-books-shell {
+          grid-template-columns: 1fr !important;
+        }
+        .jv-books-header {
+          max-width: none !important;
+        }
+      }
+      @media (max-width: 860px) {
+        .todoLibros {
+          overflow-y: auto !important;
+        }
+        .todoLibros .libros {
+          height: auto !important;
+          min-height: 100% !important;
+          padding-top: 4.8rem !important;
+          padding-bottom: 1rem !important;
+        }
+        .todoLibros .grandeLibros {
+          height: auto !important;
+        }
+        .todoLibros .itemLibros.jv-book-card {
+          flex-direction: column !important;
+          height: auto !important;
+        }
+        .jv-book-card__media {
+          border-left: 0 !important;
+          padding-left: 0 !important;
+        }
+        .jv-book-card__cover-wrap {
+          width: min(52%, 220px) !important;
+        }
+        .jv-books-control {
+          flex-wrap: wrap !important;
+        }
+      }
+      @media (max-width: 600px) {
+        .todoLibros {
+          padding: 0.8rem !important;
+        }
+        .todoLibros .salirLibros {
+          top: auto !important;
+          bottom: 0.6rem !important;
+          right: 0.6rem !important;
+        }
+        .todoLibros .libros {
+          padding-top: 1rem !important;
+          padding-bottom: 5.2rem !important;
+        }
+        .jv-books-header h1 {
+          font-size: clamp(2rem, 10vw, 2.8rem) !important;
+        }
+        .jv-books-header p,
+        .todoLibros .info1 p {
+          font-size: 0.95rem !important;
+        }
+        .todoLibros .controlesLibros,
+        .todoLibros .puntos {
+          justify-content: center !important;
+        }
+      }
+
       /* ══ PLAYER CARD (top-left) ══ */
       /* ══ PLAYER CARD (top-left) — matches handoff #player-card ══ */
       .jv-player-card {
@@ -1463,7 +2252,12 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
       #scroll-button:hover { color: var(--jv-gold) !important; border-color: var(--jv-gold) !important; }
 
       /* ══ PORTAL DIALOGS ══ */
-      .wrapperSenal { pointer-events: none !important; }
+      .wrapperSenal {
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 7999 !important;
+        pointer-events: none !important;
+      }
       .wrapperSenal > div {
         position: fixed !important;
         inset: 0 !important;
@@ -1472,9 +2266,57 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
         flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
-        background: oklch(5% 0.03 255 / 0.7) !important;
+        background:
+          radial-gradient(circle at 50% 38%, color-mix(in oklab, var(--jv-dialog-accent) 16%, transparent), transparent 42%),
+          linear-gradient(to bottom, color-mix(in oklab, var(--jv-dialog-accent) 10%, transparent), transparent 35%),
+          oklch(5% 0.03 255 / 0.78) !important;
         pointer-events: all !important;
         gap: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        min-width: 100vw !important;
+        min-height: 100vh !important;
+        padding: 1.5rem !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+      }
+      .senalIdaIM,
+      .senalMusica,
+      .senalIdaIR,
+      .senalRelatos,
+      .senalIdaIL,
+      .senalLibros,
+      .senalVueltaIM,
+      .senalVueltaIR,
+      .senalVueltaIL {
+        --jv-dialog-accent: var(--jv-gold);
+        --jv-dialog-accent-border: var(--jv-border-g);
+        --jv-dialog-accent-shadow: rgba(224, 161, 45, 0.1);
+      }
+      .senalIdaIM,
+      .senalMusica {
+        --jv-dialog-accent: oklch(80% 0.14 68);
+        --jv-dialog-accent-border: oklch(62% 0.12 68 / 0.52);
+        --jv-dialog-accent-shadow: rgba(238, 180, 70, 0.14);
+      }
+      .senalIdaIR,
+      .senalRelatos {
+        --jv-dialog-accent: oklch(77% 0.1 40);
+        --jv-dialog-accent-border: oklch(58% 0.09 40 / 0.5);
+        --jv-dialog-accent-shadow: rgba(224, 140, 84, 0.13);
+      }
+      .senalIdaIL,
+      .senalLibros {
+        --jv-dialog-accent: oklch(78% 0.09 95);
+        --jv-dialog-accent-border: oklch(60% 0.08 95 / 0.5);
+        --jv-dialog-accent-shadow: rgba(214, 188, 98, 0.13);
+      }
+      .senalVueltaIM,
+      .senalVueltaIR,
+      .senalVueltaIL {
+        --jv-dialog-accent: oklch(78% 0.08 215);
+        --jv-dialog-accent-border: oklch(56% 0.07 215 / 0.48);
+        --jv-dialog-accent-shadow: rgba(120, 170, 255, 0.12);
       }
       .wrapperSenal > div[style*="flex"],
       .wrapperSenal > div[style*="block"],
@@ -1485,7 +2327,7 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
       .wrapperSenal > div > h1 {
         padding: 2.2rem 2.8rem 1.5rem !important;
         background: var(--jv-panel-s) !important;
-        border: 1px solid var(--jv-border-g) !important;
+        border: 1px solid var(--jv-dialog-accent-border) !important;
         border-bottom: none !important;
         backdrop-filter: blur(20px) !important;
         width: min(380px, calc(100vw - 2rem)) !important;
@@ -1498,6 +2340,118 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
         text-align: center !important;
         text-shadow: none !important;
         margin: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-height: 140px !important;
+        box-shadow: 0 0 36px var(--jv-dialog-accent-shadow) !important;
+      }
+      .jv-dialog-rune {
+        width: min(380px, calc(100vw - 2rem)) !important;
+        margin: 0 !important;
+        padding: 1.8rem 2.8rem 0 !important;
+        background: var(--jv-panel-s) !important;
+        border: 1px solid var(--jv-dialog-accent-border) !important;
+        border-bottom: none !important;
+        color: var(--jv-dialog-accent) !important;
+        text-align: center !important;
+        font-family: var(--jv-ff-d) !important;
+        font-size: 2.1rem !important;
+        line-height: 1 !important;
+        box-sizing: border-box !important;
+        text-shadow: 0 0 18px var(--jv-dialog-accent-shadow) !important;
+      }
+      .jv-dialog-rune span {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 62px !important;
+        height: 62px !important;
+        border-radius: 50% !important;
+        border: 1px solid color-mix(in oklab, var(--jv-dialog-accent) 38%, transparent) !important;
+        background: radial-gradient(circle, color-mix(in oklab, var(--jv-dialog-accent) 18%, transparent), color-mix(in oklab, var(--jv-dialog-accent) 4%, transparent) 65%, transparent 70%) !important;
+        box-shadow: 0 0 28px var(--jv-dialog-accent-shadow) !important;
+        transform-origin: center !important;
+      }
+      .jv-dialog-rune--music span {
+        color: oklch(80% 0.14 68) !important;
+        animation: jv-runeMusic 2.8s ease-in-out infinite, jv-runePulse 2s ease-in-out infinite !important;
+      }
+      .jv-dialog-rune--stories span {
+        color: oklch(77% 0.1 40) !important;
+        animation: jv-runeStories 3.1s ease-in-out infinite, jv-runePulseSoft 2.3s ease-in-out infinite !important;
+      }
+      .jv-dialog-rune--books span {
+        color: oklch(78% 0.09 95) !important;
+        animation: jv-runeBooks 3.6s ease-in-out infinite, jv-runePulseSoft 2.8s ease-in-out infinite !important;
+      }
+      .jv-dialog-rune--return span {
+        color: oklch(78% 0.08 215) !important;
+        animation: jv-runeReturn 3.4s ease-in-out infinite, jv-runePulseReturn 2.6s ease-in-out infinite !important;
+      }
+      @keyframes jv-runeMusic {
+        0%, 100% { transform: translateY(0) scale(1) rotate(-4deg); }
+        25% { transform: translateY(-3px) scale(1.04) rotate(3deg); }
+        50% { transform: translateY(-1px) scale(1.08) rotate(-2deg); }
+        75% { transform: translateY(-4px) scale(1.03) rotate(4deg); }
+      }
+      @keyframes jv-runeStories {
+        0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+        30% { transform: translateY(-5px) scale(1.05) rotate(-6deg); }
+        55% { transform: translateY(0) scale(0.98) rotate(4deg); }
+        80% { transform: translateY(-2px) scale(1.03) rotate(-3deg); }
+      }
+      @keyframes jv-runeBooks {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-3px) scale(1.06); }
+      }
+      @keyframes jv-runeReturn {
+        0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+        50% { transform: translateY(-2px) scale(1.02) rotate(10deg); }
+      }
+      @keyframes jv-runePulse {
+        0%, 100% {
+          box-shadow: 0 0 18px rgba(224, 161, 45, 0.08);
+          border-color: rgba(224, 161, 45, 0.22);
+        }
+        50% {
+          box-shadow: 0 0 34px rgba(224, 161, 45, 0.18);
+          border-color: rgba(224, 161, 45, 0.42);
+        }
+      }
+      @keyframes jv-runePulseSoft {
+        0%, 100% {
+          box-shadow: 0 0 16px rgba(224, 161, 45, 0.06);
+          border-color: rgba(224, 161, 45, 0.18);
+        }
+        50% {
+          box-shadow: 0 0 26px rgba(224, 161, 45, 0.14);
+          border-color: rgba(224, 161, 45, 0.34);
+        }
+      }
+      @keyframes jv-runePulseReturn {
+        0%, 100% {
+          box-shadow: 0 0 14px rgba(120, 170, 255, 0.07);
+          border-color: rgba(120, 170, 255, 0.18);
+        }
+        50% {
+          box-shadow: 0 0 24px rgba(120, 170, 255, 0.14);
+          border-color: rgba(120, 170, 255, 0.3);
+        }
+      }
+      .jv-dialog-sub {
+        width: min(380px, calc(100vw - 2rem)) !important;
+        margin: 0 !important;
+        padding: 0 2.8rem 1.3rem !important;
+        background: var(--jv-panel-s) !important;
+        border-left: 1px solid var(--jv-dialog-accent-border) !important;
+        border-right: 1px solid var(--jv-dialog-accent-border) !important;
+        color: var(--jv-muted) !important;
+        font-family: var(--jv-ff) !important;
+        font-size: 0.84rem !important;
+        line-height: 1.65 !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
       }
       /* Card box: bottom half (.botones) */
       .botones {
@@ -1506,10 +2460,13 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
         justify-content: center !important;
         padding: 1.5rem 2.8rem 2.2rem !important;
         background: var(--jv-panel-s) !important;
-        border: 1px solid var(--jv-border-g) !important;
+        border: 1px solid var(--jv-dialog-accent-border) !important;
         border-top: none !important;
         width: min(380px, calc(100vw - 2rem)) !important;
         backdrop-filter: blur(20px) !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 18px 48px color-mix(in srgb, var(--jv-dialog-accent-shadow) 90%, transparent) !important;
       }
       .botones > div {
         padding: 0.65rem 2rem !important;
@@ -1521,6 +2478,8 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
         cursor: pointer !important;
         transition: opacity 0.2s, color 0.2s, border-color 0.2s !important;
         border-radius: 0 !important;
+        min-width: 160px !important;
+        text-align: center !important;
       }
       .botones > div:first-child {
         background: var(--jv-gold) !important;
@@ -1727,9 +2686,31 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
         .wrapperSenal > div > h1 {
           font-size: 1rem !important;
           padding: 1.6rem 1.4rem 1.2rem !important;
+          min-height: 0 !important;
+        }
+        .jv-dialog-rune {
+          padding: 1.25rem 1.4rem 0 !important;
+          font-size: 1.7rem !important;
+        }
+        .jv-dialog-rune span {
+          width: 52px !important;
+          height: 52px !important;
+        }
+        .jv-dialog-sub {
+          padding: 0 1.4rem 1rem !important;
+          font-size: 0.78rem !important;
         }
         .botones { padding: 1.2rem 1.4rem 1.6rem !important; }
-        .botones > div { padding: 0.55rem 1.2rem !important; font-size: 0.8rem !important; }
+        .botones {
+          flex-direction: column !important;
+          align-items: stretch !important;
+        }
+        .botones > div {
+          padding: 0.7rem 1rem !important;
+          font-size: 0.8rem !important;
+          min-width: 0 !important;
+          width: 100% !important;
+        }
 
         body.jv-camera-intro .saltarIntro {
           bottom: 1rem !important;
@@ -2902,6 +3883,110 @@ window.jvUpdatePlayerCard = function(avatarKey) {
 
   syncVisibleClock();
   setInterval(syncVisibleClock, 10000);
+})();
+</script>
+
+<script>
+(function(){
+  const portalDialogSubtitleMap = new Map([
+    ['.senalIdaIM', 'Las melodías antiguas resuenan al otro lado del portal.'],
+    ['.senalVueltaIM', 'El eco del pueblo te llama de vuelta a casa.'],
+    ['.senalMusica', 'La piedra rúnica vibra con acordes listos para despertar.'],
+    ['.senalIdaIR', 'Las historias olvidadas aguardan entre páginas y sombras.'],
+    ['.senalVueltaIR', 'El camino de regreso al pueblo sigue abierto para ti.'],
+    ['.senalRelatos', 'Las voces de los relatos quieren abrirse paso en este rincón.'],
+    ['.senalIdaIL', 'Los libros dormidos te esperan con secretos entre sus tapas.'],
+    ['.senalVueltaIL', 'El pueblo aún guarda sendas y secretos por recorrer.'],
+    ['.senalLibros', 'La biblioteca del portal late con conocimiento antiguo.'],
+  ]);
+  const portalDialogRuneMap = new Map([
+    ['.senalIdaIM',   { symbol: '♫', cls: 'jv-dialog-rune--music' }],
+    ['.senalMusica',  { symbol: '♫', cls: 'jv-dialog-rune--music' }],
+    ['.senalIdaIR',   { symbol: '✦', cls: 'jv-dialog-rune--stories' }],
+    ['.senalRelatos', { symbol: '✦', cls: 'jv-dialog-rune--stories' }],
+    ['.senalIdaIL',   { symbol: '❖', cls: 'jv-dialog-rune--books' }],
+    ['.senalLibros',  { symbol: '❖', cls: 'jv-dialog-rune--books' }],
+    ['.senalVueltaIM',{ symbol: '◌', cls: 'jv-dialog-rune--return' }],
+    ['.senalVueltaIR',{ symbol: '◌', cls: 'jv-dialog-rune--return' }],
+    ['.senalVueltaIL',{ symbol: '◌', cls: 'jv-dialog-rune--return' }],
+  ]);
+
+  const portalDialogCopy = [
+    ['.senalIdaIM h1', '¿Quieres viajar a la isla de la Música?'],
+    ['.senalVueltaIM h1', '¿Quieres regresar al pueblo?'],
+    ['.senalMusica h1', '¿Quieres activar el portal de la Música?'],
+    ['.senalIdaIR h1', '¿Quieres viajar a la isla de los Relatos?'],
+    ['.senalVueltaIR h1', '¿Quieres regresar al pueblo?'],
+    ['.senalRelatos h1', '¿Quieres activar el portal de los Relatos Cortos?'],
+    ['.senalIdaIL h1', '¿Quieres viajar a la isla de los Libros?'],
+    ['.senalVueltaIL h1', '¿Quieres regresar al pueblo?'],
+    ['.senalLibros h1', '¿Quieres activar el portal de los Libros?'],
+  ];
+
+  const portalDialogActions = [
+    '.siIdaIM', '.siVueltaIM', '.simusica',
+    '.siIdaIR', '.siVueltaIR', '.sirelatos',
+    '.siIdaIL', '.siVueltaIL', '.silibros'
+  ];
+
+  const portalDialogDismiss = [
+    '.noIdaIM', '.noVueltaIM', '.nomusica',
+    '.noIdaIR', '.noVueltaIR', '.norelatos',
+    '.noIdaIL', '.noVueltaIL', '.nolibros'
+  ];
+
+  portalDialogCopy.forEach(([selector, text]) => {
+    const node = document.querySelector(selector);
+    if (node) node.textContent = text;
+  });
+
+  portalDialogRuneMap.forEach(({ symbol, cls }, selector) => {
+    const dialog = document.querySelector(selector);
+    if (!dialog) return;
+
+    let rune = dialog.querySelector('.jv-dialog-rune');
+    if (!rune) {
+      rune = document.createElement('div');
+      rune.className = 'jv-dialog-rune';
+      const title = dialog.querySelector('h1');
+      if (title) {
+        title.insertAdjacentElement('beforebegin', rune);
+      } else {
+        dialog.prepend(rune);
+      }
+    }
+
+    rune.className = `jv-dialog-rune ${cls}`;
+    rune.innerHTML = `<span aria-hidden="true">${symbol}</span>`;
+  });
+
+  portalDialogSubtitleMap.forEach((text, selector) => {
+    const dialog = document.querySelector(selector);
+    if (!dialog) return;
+
+    let sub = dialog.querySelector('.jv-dialog-sub');
+    if (!sub) {
+      sub = document.createElement('p');
+      sub.className = 'jv-dialog-sub';
+      const title = dialog.querySelector('h1');
+      if (title) {
+        title.insertAdjacentElement('afterend', sub);
+      } else {
+        dialog.prepend(sub);
+      }
+    }
+    sub.textContent = text;
+  });
+
+  portalDialogActions.forEach((selector) => {
+    const node = document.querySelector(selector);
+    if (node) node.textContent = 'Sí, adelante';
+  });
+
+  portalDialogDismiss.forEach((selector) => {
+    const node = document.querySelector(selector);
+    if (node) node.textContent = 'No, tal vez en otro momento';
+  });
 })();
 </script>
 

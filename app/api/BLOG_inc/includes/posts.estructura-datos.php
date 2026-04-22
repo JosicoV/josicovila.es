@@ -1371,6 +1371,290 @@ $blogPosts = [
         'meta_description' => 'Una reflexión íntima sobre la visión y la motivación personal que impulsa la creación y el desarrollo continuo del mundo 3D de JosicoVila.es.',
         'tags' => ['inspiración', 'visión de autor', 'desarrollo personal', 'creatividad', 'JosicoVila.es', 'filosofía de diseño', 'making of', 'gamificación', 'motivación']
     ],
+
+    [
+        'slug' => 'proximo-gran-paso-nuevos-mundos',
+        'title' => 'Lo que está por venir en JosicoVila.es: nuevos mundos, nuevas ideas y el próximo gran paso',
+        'date' => '2026-04-22',
+        'content' => '
+        <img src="/BLOG_media/media/img/proximo-gran-paso-josicovila.png" alt="Avance del próximo mundo de JosicoVila.es" title="Avance del próximo mundo de JosicoVila.es" loading="lazy">
+        <br><br>
+
+        <h2>Una idea que no deja de crecer</h2>
+
+        <p>
+        Hay ideas que llegan poco a poco, casi sin hacer ruido, y otras que se quedan dando vueltas en la cabeza hasta que terminan pidiendo su sitio. Desde hace tiempo, una de esas ideas no deja de acompañarme: ampliar el mundo de JosicoVila.es.
+        </p>
+
+        <p>
+        Parte de esta inquietud nace también de algo muy cercano y especial. Uno de mis sobrinos me insiste a menudo en que el mundo debería crecer, en que aún quedan más lugares por descubrir, más rincones por construir y más aventuras por imaginar. Y la verdad es que lleva razón. Cuando alguien te lo dice con esa ilusión, es difícil no empezar a verlo también con otros ojos.
+        </p>
+
+        <h2>El reto técnico de crecer</h2>
+
+        <p>
+        Ahora mismo, el pueblo actual ya tiene un tamaño y una carga considerable. No es un simple escenario decorativo: tiene música, relatos, libros, zonas explorables, personajes, detalles ocultos y una identidad muy clara. Por eso, si doy el paso de ampliarlo, no quiero hacerlo de cualquier manera.
+        </p>
+
+        <p>
+        A nivel técnico, una de las ideas que más sentido tiene es conectar el mundo actual con uno nuevo mediante una pantalla de carga. La intención sería que, al pasar de un mundo a otro, el primero pudiera descargarse de memoria para dejar espacio al siguiente.
+        </p>
+
+        <p>
+        Eso permitiría seguir creciendo sin arrastrar un peso excesivo en una sola escena y, al mismo tiempo, abriría la puerta a crear lugares más ambiciosos, mejor diferenciados y con personalidad propia.
+        </p>
+
+        <h2>Un nuevo mundo con sentido</h2>
+
+        <p>
+        Pero la parte técnica, siendo importante, no es lo único que me preocupa. También me importa mucho el sentido de ese nuevo mundo. No quiero construir otro escenario 3D solo por añadir más terreno para explorar. Quiero que tenga un motivo para existir. Quiero que transmita algo, que invite a avanzar, que despierte curiosidad y que forme parte real de la experiencia.
+        </p>
+
+        <p>
+        Al final, crecer no consiste solo en hacer el mapa más grande. Consiste en conseguir que cada nueva zona merezca la pena.
+        </p>
+
+        <h2>Cambiar sin perder la esencia</h2>
+
+        <p>
+        Y ahí es donde empiezan las preguntas más interesantes. ¿Debería mantener el mismo estilo visual que el pueblo actual? A día de hoy, estoy prácticamente convencido de que no.
+        </p>
+
+        <p>
+        El mundo que ya existe tiene un aire medieval muy marcado, y precisamente por eso quizá el siguiente deba ofrecer algo distinto, sin perder la esencia general del proyecto. No se trataría de romper con lo anterior, sino de ampliar el universo con una nueva atmósfera, con nuevas sensaciones y con otra forma de explorarlo.
+        </p>
+
+        <h2>El castillo y los acertijos</h2>
+
+        <p>
+        Entre las ideas que más me rondan está la posibilidad de añadir un castillo visitable por dentro. No como un simple edificio bonito en la distancia, sino como un lugar con presencia, con salas que explorar, con secretos, con pequeños acertijos y con recompensas en distintas habitaciones.
+        </p>
+
+        <p>
+        Me atrae especialmente la idea de que cada estancia tenga algo propio: una prueba, una sorpresa, una pista o una recompensa que anime a seguir avanzando. Un espacio que no solo se mire, sino que también se juegue.
+        </p>
+
+        <h2>Todo sigue en proceso, pero muy vivo</h2>
+
+        <p>
+        Todavía no hay decisiones cerradas. Todo está en proceso. Pero es un proceso muy vivo.
+        </p>
+
+        <p>
+        Y quizá eso sea lo más bonito de esta etapa: que JosicoVila.es no está terminado, ni quieto, ni limitado a lo que ya se ve. Sigue creciendo como crecen las ideas que importan de verdad: despacio, con dudas, con pruebas, con ilusión y con ganas de hacer que cada nuevo rincón merezca la pena.
+        </p>
+
+        <blockquote><i>
+        “El próximo gran paso no será solo ampliar el mapa, sino dar más vida al mundo.”
+        </i></blockquote>
+
+        <p>
+        Y sí, seguramente mi sobrino seguirá insistiendo. Puede que, al final, tenga mucho que ver con que ese nuevo mundo termine existiendo.
+        </p>
+        ',
+        'meta_description' => 'Descubre hacia dónde podría crecer JosicoVila.es: nuevos mundos, una posible transición con pantalla de carga, cambios de estilo visual y la idea de un castillo lleno de acertijos.',
+        'tags' => ['futuro del proyecto', 'nuevo mundo 3D', 'desarrollo de juegos', 'pantalla de carga', 'castillo', 'acertijos', 'JosicoVila.es']
+    ],
+
+    [
+        'slug' => 'secretos-entre-caminos-exploracion-curiosidad',
+        'title' => 'Secretos entre caminos: cómo diseño la exploración para despertar curiosidad',
+        'date' => '2026-04-22',
+        'content' => '
+        <img src="/BLOG_media/media/img/secretos-entre-caminos-josicovila.png" alt="Exploración y secretos en el mundo 3D de JosicoVila.es" title="Exploración y secretos en el mundo 3D de JosicoVila.es" loading="lazy">
+        <br><br>
+
+        <h2>Un mundo pequeño que invita a descubrir</h2>
+
+        <p>
+        Uno de los aspectos que más me interesan de JosicoVila.es no es solo construir un mundo bonito, sino conseguir que invite a mirar un poco más allá. A detenerse. A probar. A volver sobre los pasos. A pensar que quizá detrás de un camino, de una isla o de un portal haya algo esperando a ser descubierto.
+        </p>
+
+        <p>
+        El mundo actual no es especialmente grande. Tiene el pueblo principal y tres islas flotantes, y en realidad no necesita ser enorme para esconder cosas interesantes. A veces no hace falta un mapa inmenso para despertar la curiosidad, sino un entorno que sugiera que merece la pena explorar.
+        </p>
+
+        <p>
+        Por eso hay pocas instrucciones directas. No quería convertir la experiencia en una lista evidente de tareas marcadas desde el principio. Prefiero dejar espacio a la intuición del visitante, a esa sensación de estar recorriendo un lugar donde algo puede pasar si decides seguir avanzando un poco más.
+        </p>
+
+        <h2>Una pista clara para empezar</h2>
+
+        <p>
+        Aun así, tampoco quería que todo dependiera del azar. Por eso el panel de logros tiene un papel importante desde el primer momento.
+        </p>
+
+        <p>
+        Conseguir el primer logro casi al empezar a moverse, <strong>“Aprendiendo a moverse”</strong>, me parece una forma sencilla pero efectiva de lanzar un mensaje muy claro: aquí avanzar tiene recompensa. Esa pequeña confirmación puede ser suficiente para que quien entra por primera vez entienda que merece la pena seguir probando, seguir buscando y seguir descubriendo cómo funciona el mundo.
+        </p>
+
+        <p>
+        A partir de ahí, la idea es que el visitante quiera continuar hasta desbloquearlos todos.
+        </p>
+
+        <h2>Explorar, mejorar y volver</h2>
+
+        <p>
+        Toda la parte de gamificación está pensada con esa intención: no solo acompañar la exploración, sino hacer que cada visita anime a superarse un poco más.
+        </p>
+
+        <p>
+        Los logros, la experiencia y el nivel no están ahí solo como adorno. Forman parte de una pequeña progresión que busca que el visitante sienta que su paso por el mundo deja huella. Aunque al volver pueda conseguir de nuevo ciertos logros, su experiencia y su nivel se conservan en el navegador o en el ordenador usado.
+        </p>
+
+        <p>
+        Eso hace que regresar tenga sentido. No se trata solo de repetir, sino de seguir avanzando. De continuar una pequeña evolución personal dentro del propio mundo. La idea es que, visita tras visita, ese progreso siga creciendo hasta llegar al nivel máximo.
+        </p>
+
+        <h2>Islas flotantes, secretos y recompensas</h2>
+
+        <p>
+        Las tres islas flotantes también están planteadas con esa misma filosofía. Cada una guarda sus propios secretos y sus propias recompensas, y forman parte de esa invitación constante a salir del camino más obvio.
+        </p>
+
+        <p>
+        Me gusta pensar que no se descubren solo porque alguien lea una instrucción, sino porque algo en el propio diseño empuja a acercarse, a probar, a preguntarse qué habrá allí arriba o qué ocurrirá al entrar en cierto lugar.
+        </p>
+
+        <h2>Dejar que ocurra la magia</h2>
+
+        <p>
+        El acceso a las islas mediante portales busca ser intuitivo, casi natural. Son elementos pensados para llamar la atención sin necesidad de explicarlo demasiado. Su propia presencia ya sugiere que no son algo decorativo.
+        </p>
+
+        <p>
+        Además, tienen una personalidad visual muy marcada. Son los únicos elementos con textura de vídeo animada, y eso les da una fuerza especial dentro del conjunto. Destacan, atraen la mirada y transmiten que ahí hay algo diferente, algo vivo, algo que merece ser probado.
+        </p>
+
+        <p>
+        Al final, la idea es sencilla: solo hay que acercarse y dejar que se produzca la magia.
+        </p>
+
+        <h2>Cuando la curiosidad guía el camino</h2>
+
+        <p>
+        Quizá esa sea una de las intenciones más importantes detrás del mundo 3D de JosicoVila.es: no llevar de la mano al visitante todo el tiempo, sino dejar pequeñas pistas, señales y recompensas para que sea su propia curiosidad la que haga el resto.
+        </p>
+
+        <p>
+        Porque descubrir algo por uno mismo siempre se siente mejor.
+        </p>
+
+        <p>
+        Y si el diseño consigue despertar esa sensación, aunque sea en pequeños momentos, entonces el mundo ya no es solo un escenario. Empieza a convertirse en una experiencia que invita a volver.
+        </p>
+        ',
+        'meta_description' => 'Descubre cómo está diseñada la exploración en JosicoVila.es para despertar la curiosidad del visitante mediante logros, portales mágicos, islas flotantes y secretos con recompensa.',
+        'tags' => ['exploración', 'gamificación', 'secretos', 'islas flotantes', 'portales mágicos', 'diseño de juego', 'JosicoVila.es']
+    ],
+
+    [
+        'slug' => 'narrativa-ambiental-rincones-josicovila',
+        'title' => 'Cuando un rincón cuenta algo: narrativa ambiental en el mundo 3D de JosicoVila.es',
+        'date' => '2026-04-22',
+        'content' => '
+        <img src="/BLOG_media/media/img/narrativa-ambiental-josicovila.png" alt="Narrativa ambiental y rincones especiales en JosicoVila.es" title="Narrativa ambiental en JosicoVila.es" loading="lazy">
+        <br><br>
+
+        <h2>Un mundo que también se siente</h2>
+
+        <p>
+        Uno de los aspectos que más me interesan de JosicoVila.es es que el mundo no solo pueda recorrerse, sino también sentirse. No me gusta dar demasiadas pistas sobre cómo avanzar o qué hacer en cada momento. Prefiero que muchas cosas se descubran por intuición, por curiosidad y por esa sensación de que cada rincón puede tener algo propio que contar.
+        </p>
+
+        <p>
+        Al final, un mundo 3D no tiene por qué hablar siempre con textos o instrucciones directas. A veces, basta con una atmósfera bien pensada, con un detalle sonoro, con una pequeña escena al fondo o con un lugar colocado en el punto justo para que el visitante entienda, casi sin darse cuenta, que ahí hay vida, intención y algo que merece la pena descubrir.
+        </p>
+
+        <h2>Un pueblo que se siente vivo</h2>
+
+        <p>
+        El pueblo de JosicoVila.es es un buen ejemplo de esa idea. Más allá de lo visual, una parte importante de su personalidad está en el uso de los sonidos posicionales, que ayudan a que cada zona tenga su propia identidad y su propio ambiente.
+        </p>
+
+        <p>
+        Si te acercas al mercado, por ejemplo, puedes escuchar las conversaciones de los comerciantes con sus clientes. Ese pequeño detalle no solo aporta realismo, sino que da la sensación de estar entrando en un lugar activo, habitado y en movimiento.
+        </p>
+
+        <p>
+        Sin embargo, si te alejas de esa zona y avanzas en dirección a los soldados que están practicando, el bullicio del mercado se va quedando atrás poco a poco. Entonces empiezan a ganar protagonismo otros sonidos: la voz del sargento, las instrucciones y el ambiente de entrenamiento. Y sin necesidad de que nadie te lo explique, entiendes que has cambiado de espacio, de ritmo y casi de historia.
+        </p>
+
+        <h2>Contar sin explicarlo todo</h2>
+
+        <p>
+        Eso es, en parte, lo que más me gusta de la narrativa ambiental. No consiste en llenar el mundo de mensajes directos, sino en dejar que el visitante interprete el lugar a través de lo que ve, de lo que oye y de lo que le sugiere cada zona.
+        </p>
+
+        <p>
+        Creo que hay algo especial en descubrir un mundo de esa forma. Cuando no se da todo hecho desde el principio, explorar se vuelve más personal, más intuitivo y más natural.
+        </p>
+
+        <p>
+        Y en un proyecto como JosicoVila.es, donde la exploración tranquila forma parte de la experiencia, esa forma de contar encaja especialmente bien.
+        </p>
+
+        <h2>Las islas también tienen algo que decir</h2>
+
+        <p>
+        Las islas flotantes son otro ejemplo de cómo cada rincón puede tener una personalidad propia y un propósito claro dentro del conjunto.
+        </p>
+
+        <h3>La isla de la música</h3>
+
+        <p>
+        La isla de la música guarda un reproductor escondido con toda mi discografía. Es un rincón pensado para que la visita al Pueblo de los Dragones no sea siempre igual, sino que cada uno pueda acompañarla con sonidos distintos y darle otro matiz al recorrido.
+        </p>
+
+        <p>
+        Me gusta la idea de que la música no aparezca solo como fondo general, sino como algo que también se descubre, que forma parte del viaje y que puede transformar la manera de vivir el mundo.
+        </p>
+
+        <h3>La isla de los relatos cortos</h3>
+
+        <p>
+        La isla de los relatos cortos tiene un enfoque diferente, más íntimo y más narrativo. Allí pueden encontrarse historias en varios formatos: audio-relato, relato escrito o descarga en PDF.
+        </p>
+
+        <p>
+        Eso permite que cada visitante elija cómo quiere acercarse a ellas. Pueden servir para contárselas a los más pequeños de la casa, para compartir un rato de lectura en familia o simplemente para detenerse unos minutos y viajar a los mundos imaginarios que describen.
+        </p>
+
+        <p>
+        Es un rincón que no solo se explora: también se escucha, se lee y se imagina.
+        </p>
+
+        <h3>La isla de los libros</h3>
+
+        <p>
+        Por su parte, la isla de los libros está pensada como una puerta de entrada a cada obra. En ella se puede encontrar una sinopsis de cada libro y también un vídeo explicativo sobre la trama de cada uno.
+        </p>
+
+        <p>
+        En este caso, la idea es ofrecer una primera toma de contacto, una invitación a conocer mejor esas historias y a despertar el interés por lo que contienen.
+        </p>
+
+        <h2>Rincones especiales dentro de un mundo en crecimiento</h2>
+
+        <p>
+        JosicoVila.es va a seguir creciendo. Hay nuevas ideas en camino, nuevos espacios posibles y muchas cosas todavía por explorar y desarrollar. Pero mientras tanto, me gusta pensar que los rincones y secretos del mundo actual ya tienen algo especial.
+        </p>
+
+        <p>
+        No hace falta que un mundo sea gigantesco para resultar atractivo. A veces basta con que cada zona tenga alma, con que los detalles estén puestos con intención y con que el visitante sienta que detrás de cada rincón hay una pequeña historia, una pista o una atmósfera esperando.
+        </p>
+
+        <p>
+        Si eso ocurre, entonces el mundo deja de ser solo un escenario. Se convierte en un lugar con identidad propia.
+        </p>
+
+        <p>
+        Y quizá ahí esté una de las cosas más bonitas de este proyecto: que todavía hay mucho por venir, pero ya existen pequeños espacios que invitan a detenerse, escuchar y dejarse llevar.
+        </p>
+        ',
+        'meta_description' => 'Descubre cómo la narrativa ambiental de JosicoVila.es da vida al pueblo, las islas flotantes y sus rincones especiales mediante sonidos, atmósferas y exploración intuitiva.',
+        'tags' => ['narrativa ambiental', 'exploración', 'sonidos posicionales', 'islas flotantes', 'mundo 3D', 'JosicoVila.es', 'diseño de juego']
+    ],
     // Añade más entradas aquí en el futuro
 ];
 ?>
