@@ -17,3 +17,5 @@ desktop.ini
 .idea/
 .vscode/
 *.log
+
+/CLAUDE_DESIGN/

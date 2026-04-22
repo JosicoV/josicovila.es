@@ -1,642 +1,658 @@
-/* c:\xampp-entero\htdocs\josicovila.es\css\blog-styles.css */
-/* Importar fuentes desde Google */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:wght@700&display=swap');
+/* ══════════════════════════════════════════════════════
+   JosicoVila.es — Blog & Post Styles
+   Design: oklch dark medieval-fantasy theme
+   ══════════════════════════════════════════════════════ */
 
-
-/* Aplicar box-sizing globalmente */
-*, *::before, *::after {
-    box-sizing: border-box;
+:root {
+  --bg:          oklch(9%  0.018 260);
+  --surface:     oklch(13% 0.018 260);
+  --card:        oklch(16% 0.016 260);
+  --card-hover:  oklch(20% 0.018 260);
+  --border:      oklch(25% 0.02  260);
+  --text:        oklch(92% 0.008 80);
+  --muted:       oklch(55% 0.01  260);
+  --subtle:      oklch(38% 0.01  260);
+  --gold:        oklch(74% 0.15  68);
+  --gold-dim:    oklch(60% 0.12  68);
+  --teal:        oklch(72% 0.13  195);
+  --rose:        oklch(70% 0.14  15);
+  --violet:      oklch(68% 0.14  290);
+  --green:       oklch(72% 0.13  145);
+  --amber:       oklch(72% 0.13  30);
+  --ff-display:  'Cinzel', 'Playfair Display', Georgia, serif;
+  --ff-medieval: 'Uncial Antiqua', cursive;
+  --ff-quote:    'Almendra', Georgia, serif;
+  --ff-body:     'DM Sans', system-ui, sans-serif;
 }
 
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-
-/* Estilos básicos */
 body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: #f0f0f0;
-    padding-top: 60px; /* Espacio para el header fijo */
-    padding-left: 270px; /* Espacio para el sidebar fijo (cuando está visible) */
-    transition: padding-left 0.3s ease; /* Transición suave al ocultar/mostrar sidebar */
-    background: url('../intro/images/fondo-josico.png') repeat; /* Fondo con imagen */
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ff-body);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* undo old styles */
+  padding-top: 0;
+  padding-left: 0;
 }
 
-/* Header Fijo */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background-image: linear-gradient(to left, #7e7e7e, white, #201642);
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    box-sizing: border-box; /* Incluir padding en el width */
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    border-bottom: 2px solid #ccc;
-}
-header .logo a img{
-    height: 80px;
-    width: auto;
-    margin-top: 30px;
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
 }
 
-header .play-button{
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
+/* ══════════════════════════════════════════════════════
+   NAV
+   ══════════════════════════════════════════════════════ */
+nav.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 64px;
+  background: color-mix(in oklch, var(--bg) 80%, transparent);
+  backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.nav-logo img { height: 36px; width: auto; display: block; object-fit: contain; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--muted); text-decoration: none; font-size: 0.85rem;
+  font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold); color: var(--bg); border: none;
+  padding: 0.45rem 1.1rem;
+  font-family: var(--ff-body); font-weight: 600; font-size: 0.8rem;
+  letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+  text-decoration: none; transition: opacity 0.2s; display: inline-block;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ══════════════════════════════════════════════════════
+   READING PROGRESS BAR (post view)
+   ══════════════════════════════════════════════════════ */
+#progress-bar {
+  position: fixed; top: 0; left: 0; z-index: 200;
+  height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--rose));
+  transition: width 0.1s linear;
+  pointer-events: none;
 }
 
-header .play-button a img {
-    height: 100px;
-    width: auto;
-    margin-top: 20px;
+/* ══════════════════════════════════════════════════════
+   BLOG HOME HERO
+   ══════════════════════════════════════════════════════ */
+.blog-hero {
+  position: relative; min-height: 88vh;
+  display: flex; align-items: flex-end;
+  padding: 0 0 4rem;
+  overflow: hidden; margin-top: 64px;
+}
+.blog-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, transparent 30%, var(--bg) 100%),
+    linear-gradient(to right, var(--bg) 0%, transparent 60%),
+    var(--hero-img, none) center/cover no-repeat;
+  filter: saturate(0.7);
+}
+.blog-hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 40%, oklch(20% 0.08 260 / 0.5), transparent 70%);
+}
+.blog-hero-content {
+  position: relative; z-index: 1;
+  max-width: 680px; padding: 0 2.5rem;
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--gold); color: var(--bg);
+  font-family: var(--ff-medieval);
+  font-size: 0.75rem; letter-spacing: 0.06em;
+  padding: 0.3rem 0.8rem;
+  margin-bottom: 1.2rem;
+  animation: heroEnter 0.6s 0.2s ease both;
+}
+.blog-hero-title {
+  font-family: var(--ff-display); letter-spacing: 0.01em;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 900; line-height: 1.1;
+  color: var(--text); text-wrap: balance;
+  margin-bottom: 1rem;
+  animation: heroEnter 0.7s 0.35s ease both;
+}
+.blog-hero-excerpt {
+  color: var(--muted); font-size: 1.05rem; line-height: 1.7;
+  max-width: 520px; margin-bottom: 1.8rem;
+  animation: heroEnter 0.6s 0.5s ease both;
+}
+.blog-hero-meta {
+  display: flex; align-items: center; gap: 1.2rem;
+  color: var(--muted); font-size: 0.82rem;
+  animation: heroEnter 0.6s 0.65s ease both;
+}
+.blog-hero-meta time { color: var(--text); }
+.blog-hero-meta .sep { opacity: 0.4; }
+.hero-read-link {
+  color: var(--gold); text-decoration: none; font-weight: 600;
+  font-size: 0.9rem; letter-spacing: 0.02em;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  border-bottom: 1px solid transparent; transition: border-color 0.2s;
+}
+.hero-read-link:hover { border-color: var(--gold); }
+
+/* ══════════════════════════════════════════════════════
+   FILTER BAR
+   ══════════════════════════════════════════════════════ */
+.filter-bar {
+  position: sticky; top: 64px; z-index: 90;
+  background: color-mix(in oklch, var(--bg) 92%, transparent);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.filter-inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 2.5rem;
+  display: flex; gap: 0; overflow-x: auto;
+  scrollbar-width: none;
+}
+.filter-inner::-webkit-scrollbar { display: none; }
+.filter-btn {
+  background: none; border: none; cursor: pointer;
+  color: var(--muted); font-family: var(--ff-medieval);
+  font-size: 0.82rem; letter-spacing: 0.05em;
+  padding: 1rem 1.2rem;
+  white-space: nowrap; position: relative;
+  transition: color 0.2s;
+}
+.filter-btn::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: var(--gold);
+  transform: scaleX(0); transition: transform 0.2s;
+}
+.filter-btn:hover { color: var(--text); }
+.filter-btn.active { color: var(--gold); }
+.filter-btn.active::after { transform: scaleX(1); }
+
+/* ══════════════════════════════════════════════════════
+   MAIN GRID (blog home)
+   ══════════════════════════════════════════════════════ */
+.blog-main {
+  max-width: 1280px; margin: 0 auto;
+  padding: 4rem 2.5rem 6rem;
+}
+.section-label {
+  font-family: var(--ff-medieval);
+  font-size: 0.78rem; letter-spacing: 0.08em;
+  color: var(--muted);
+  display: flex; align-items: center; gap: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+.section-label::before {
+  content: ''; flex: none; width: 32px; height: 1px; background: var(--border);
 }
 
-/* Sidebar Fijo */
-aside {
-    position: fixed;
-    top: 60px; /* Debajo del header */
-    left: 0;
-    width: 250px;
-    height: calc(100vh - 60px); /* Altura restante */
-    background-color: #201642;
-    color: white;
-    padding: 15px;
-    box-sizing: border-box;
-    overflow-y: auto; /* Scroll si hay muchos posts */
-    z-index: 900;
-    border-right: 1px solid #ccc;
-    transition: transform 0.3s ease; /* Animación para ocultar/mostrar */
+.grid-wrap {
+  display: flex; flex-direction: column;
+  gap: 1.5px; background: var(--border);
+  margin-bottom: 6rem;
 }
-aside h2 {
-    margin-top: 0;
-    font-size: 1.2em;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
+.grid-row {
+  display: grid; gap: 1.5px; background: var(--border);
 }
-aside ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-aside ul li a {
-    display: block;
-    padding: 8px 0;
-    text-decoration: none;
-    color: #ccc;
-    border-bottom: 1px dashed #ccc;
-}
-aside ul li a:hover {
-    background-color: #777;
-}
-aside ul li a.active { /* Estilo para el post activo */
-    font-weight: bold;
-    color: #ccc;
-}
-aside .search-container {
-    margin-top: 10px;
-    margin-bottom: 20px;
+.grid-row.r-7-5   { grid-template-columns: 7fr 5fr; }
+.grid-row.r-4-4-4 { grid-template-columns: 1fr 1fr 1fr; }
+.grid-row.r-12    { grid-template-columns: 1fr; }
+.grid-row.r-5-7   { grid-template-columns: 5fr 7fr; }
+.grid-row.r-6-3-3 { grid-template-columns: 6fr 3fr 3fr; }
 
+/* ── CARD ── */
+.card-wrap { animation: cardEnter 0.55s cubic-bezier(0.22,1,0.36,1) both; }
+.card-wrap.hidden { display: none; }
+
+article.card {
+  background: var(--card);
+  display: flex; flex-direction: column;
+  overflow: hidden; position: relative;
+  cursor: pointer;
+  transition: background 0.25s;
+  height: 100%;
 }
-/* Estilo para ocultar sidebar */
-body.sidebar-hidden {
-    /* Este padding-left es para la vista de ESCRITORIO cuando la sidebar está oculta. */
-    /* En móvil, lo manejaremos dentro de la media query. */
-    /* padding-left: 20px; */ /* Comentado o ajustado si es solo para escritorio */
+article.card:hover { background: var(--card-hover); }
+article.card a { text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; }
+
+.card-img {
+  width: 100%; aspect-ratio: 16/9; overflow: hidden; flex: none;
+  background: var(--surface);
 }
-body.sidebar-hidden aside {
-    transform: translateX(-100%); /* Mover fuera de la pantalla */
+.card-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease, filter 0.3s;
+  filter: saturate(0.8);
 }
-/* Botón para ocultar/mostrar */
-#toggle-sidebar {
-    position: fixed;
-    top: 70px;
-    left: 260px; /* Justo fuera del sidebar */
-    z-index: 950;
-    padding: 5px 10px;
-    cursor: pointer;
-    background-color: #ccc;
-    border: 1px solid #aaa;
-    border-left: none;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    transition: left 0.3s ease;
-}
-body.sidebar-hidden #toggle-sidebar {
-    left: 0; /* Pegar al borde cuando está oculto */
-    border-left: 1px solid #aaa;
-    border-right: none;
-    border-radius: 0;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+article.card:hover .card-img img {
+  transform: scale(1.03);
+  filter: saturate(1);
 }
 
-/* Contenido Principal */
-main {
-    padding: 20px;
-    background-color: rgba(211,211,211,0.5);
-    margin: 20px; /* Margen alrededor del contenido */
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    backdrop-filter: blur(5px); /* Añadido: Esto desenfocará lo que esté detrás del article */
-    -webkit-backdrop-filter: blur(5px); /* Para compatibilidad con Safari */
+article.card.large .card-img { aspect-ratio: 16/10; }
+article.card.wide { flex-direction: row; }
+article.card.wide .card-img { width: 45%; aspect-ratio: unset; min-height: 280px; }
+article.card.wide .card-body { flex: 1; }
+
+article.card.overlay { min-height: 420px; }
+article.card.overlay a { position: relative; }
+article.card.overlay .card-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: unset;
 }
-main article{
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background-color: rgba(30, 38, 59, 0.7);
-    color: white;
-    backdrop-filter: blur(5px); /* Añadido: Esto desenfocará lo que esté detrás del article */
-    -webkit-backdrop-filter: blur(5px); /* Para compatibilidad con Safari */
-}
-main article h1 {
-    margin-top: 0;
-    color: #ccc;
-}
-main article .post-meta {
-    font-size: 0.9em;
-    color: #777;
-    margin-bottom: 15px;
-    background-color: white;
-    padding: 5px;
-    border-radius: 5px;
-}
-main article .post-content {
-    line-height: 1.6;
-}
-main article .post-content p,
-main article .post-content ul,
-main article .post-content h2,
-main article .post-content h3 {
-    margin-bottom: 1em;
-}
-main article a, main article a:visited, main article a:hover, main article b{
-    color: #999;
+article.card.overlay .card-img img { height: 100%; filter: saturate(0.6) brightness(0.55); }
+article.card.overlay .card-body {
+  position: relative; z-index: 1; margin-top: auto;
+  background: linear-gradient(to top, oklch(8% 0.02 260 / 0.95) 0%, transparent 100%);
 }
 
-main article img{
-    max-width: 100%; /* Asegura que la imagen no sea más ancha que su contenedor */
-    height: auto;    /* Mantiene la proporción de la imagen */
-    display: block;  /* Evita espacios extra debajo de la imagen si es inline */
-    margin-left: auto; /* Centra la imagen si es más pequeña que el contenedor */
-    margin-right: auto;
-    border-radius: 15px;
-}
+.card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.card.large .card-body { padding: 2rem; }
 
-/* --- ESTILOS PARA VIDEOS RESPONSIVOS (IFRAMES DE YOUTUBE) --- */
-.video-responsive {
-    overflow: hidden;
-    /* 16:9 Aspect Ratio (divide 9 entre 16 = 0.5625 o 56.25%) */
-    /* Para otras relaciones de aspecto, ajusta este valor:
-       4:3  => padding-bottom: 75%;
-       1:1  => padding-bottom: 100%;
-    */
-    padding-bottom: 56.25%;
-    position: relative;
-    height: 0;
-    margin-bottom: 1.5em; /* Espacio debajo del video, igual que un párrafo */
+.card-category {
+  font-family: var(--ff-medieval);
+  font-size: 0.7rem; letter-spacing: 0.05em;
+  margin-bottom: 0.7rem;
+  display: inline-block;
 }
-.video-responsive iframe {
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-}
+.cat-dragones    { color: var(--rose); }
+.cat-mundo3d     { color: var(--teal); }
+.cat-desarrollo  { color: var(--violet); }
+.cat-musica      { color: var(--green); }
+.cat-multijugador{ color: var(--gold); }
+.cat-relatos     { color: var(--amber); }
+.cat-meta        { color: var(--muted); }
 
-/* Estilos para la página principal del blog y la cuadrícula de posts */
-.blog-index-container {
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
+.card-title {
+  font-family: var(--ff-display); letter-spacing: 0.01em;
+  font-weight: 700; line-height: 1.25;
+  color: var(--text); margin-bottom: 0.6rem;
+  text-wrap: balance;
 }
+article.card.large   .card-title { font-size: 1.6rem; }
+article.card.overlay .card-title { font-size: 1.9rem; font-weight: 900; }
+article.card:not(.large):not(.overlay) .card-title { font-size: 1.05rem; }
 
-#blog-posts-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Espacio entre las filas de posts */
-    margin-bottom: 30px; /* Espacio antes del botón "cargar más" */
+.card-excerpt {
+  color: var(--muted); font-size: 0.88rem; line-height: 1.65;
+  flex: 1; display: -webkit-box;
+  -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
+article.card.large .card-excerpt { -webkit-line-clamp: 4; font-size: 0.95rem; }
 
-.posts-row-featured,
-.posts-row-secondary {
-    display: flex;
-    flex-wrap: wrap; /* Importante para la responsividad */
-    gap: 20px; /* Espacio entre las tarjetas de post */
+.card-footer {
+  margin-top: 1.2rem; padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.75rem; color: var(--muted);
 }
+.reading-time { display: flex; align-items: center; gap: 0.35rem; }
 
-.post-card {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 15px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    transition: box-shadow 0.3s ease;
+/* ══════════════════════════════════════════════════════
+   SINGLE POST — HERO
+   ══════════════════════════════════════════════════════ */
+.post-hero {
+  position: relative; height: 85vh; min-height: 520px;
+  display: flex; align-items: flex-end;
+  padding-bottom: 5rem;
+  margin-top: 64px; overflow: hidden;
 }
+.post-hero-img {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, oklch(9% 0.018 260 / 0.2) 0%, var(--bg) 100%),
+    linear-gradient(to right, var(--bg) 0%, transparent 55%),
+    var(--post-hero-img, none) center / cover no-repeat;
+  filter: saturate(0.65);
+}
+.post-hero-inner {
+  position: relative; z-index: 1;
+  max-width: 68ch; margin: 0 auto;
+  padding: 0 2rem; width: 100%;
+}
+.breadcrumb {
+  display: flex; gap: 0.5rem; align-items: center;
+  font-family: var(--ff-medieval);
+  font-size: 0.8rem; color: var(--muted);
+  margin-bottom: 1.5rem; flex-wrap: wrap;
+  animation: heroEnter 0.6s 0.1s ease both;
+}
+.breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb .sep { opacity: 0.4; }
+.breadcrumb .current { color: var(--gold); }
 
-.post-card:hover {
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+.post-category-label {
+  display: inline-block;
+  font-family: var(--ff-medieval);
+  font-size: 0.8rem; letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  animation: heroEnter 0.6s 0.2s ease both;
 }
+h1.post-title {
+  font-family: var(--ff-display); letter-spacing: 0.02em;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 900; line-height: 1.1;
+  color: var(--text); text-wrap: balance;
+  margin-bottom: 1.5rem;
+  animation: heroEnter 0.7s 0.35s ease both;
+}
+.post-meta {
+  display: flex; align-items: center; gap: 1rem;
+  font-size: 0.8rem; color: var(--muted); flex-wrap: wrap;
+  animation: heroEnter 0.6s 0.5s ease both;
+}
+.post-meta time { color: var(--text); font-weight: 500; }
+.post-meta .dot { opacity: 0.35; }
+.post-read-time { display: flex; align-items: center; gap: 0.35rem; }
 
-.post-card-image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9; /* Mantiene la proporción de la imagen */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-    border-radius: 6px;
-    margin-bottom: 12px;
+/* ══════════════════════════════════════════════════════
+   SINGLE POST — BODY LAYOUT
+   ══════════════════════════════════════════════════════ */
+.post-layout {
+  max-width: 68ch; margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+  position: relative;
 }
-
-.post-card.featured-post {
-    flex: 1 1 calc(50% - 10px); /* Dos posts por fila, restando el gap */
-    min-width: calc(50% - 10px); /* Para evitar que se encojan demasiado antes de envolver */
-}
-.post-card.featured-post .post-card-image {
-    max-height: 250px; /* O la altura que prefieras para los destacados */
-}
-
-
-.post-card.secondary-post {
-    flex: 1 1 calc(25% - 15px); /* Cuatro posts por fila */
-    min-width: calc(25% - 15px);
-}
-.post-card.secondary-post .post-card-image {
-    max-height: 150px; /* Imagen más pequeña para los secundarios */
-}
-
-.post-card-title {
-    margin-top: 0;
-    margin-bottom: 8px;
-    line-height: 1.3;
-}
-.post-card.featured-post .post-card-title {
-    font-size: 1.5em;
-}
-.post-card.secondary-post .post-card-title {
-    font-size: 1.15em;
-}
-
-.post-card-title a {
-    text-decoration: none;
-    color: #2c3e50; /* Un color oscuro para el título */
-}
-.post-card-title a:hover {
-    color: #3498db; /* Un color de acento al pasar el ratón */
-}
-
-.post-card-excerpt {
-    font-size: 0.9em;
-    color: #555;
-    flex-grow: 1; /* Hace que el extracto ocupe el espacio disponible */
-    margin-bottom: 12px;
-    line-height: 1.5;
-}
-
-.post-card-readmore {
-    display: inline-block;
-    padding: 8px 15px;
-    background-color: #3498db; /* Color primario */
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    text-align: center;
-    margin-top: auto; /* Empuja el botón al final de la tarjeta */
-    font-weight: bold;
-    font-size: 0.85em;
-    transition: background-color 0.2s ease;
-}
-.post-card-readmore:hover {
-    background-color: #2980b9; /* Un tono más oscuro al pasar el ratón */
-}
-
-#load-random-posts.blog-button {
-    display: block;
-    margin: 20px auto;
-    padding: 12px 28px;
-    font-size: 1.05em;
-    background-color: #27ae60; /* Un verde para la acción */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: bold;
-}
-#load-random-posts.blog-button:hover {
-    background-color: #229954;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 1024px) {
-    .post-card.secondary-post {
-        flex-basis: calc(50% - 10px); /* 2 posts secundarios por fila en tablets */
-        min-width: calc(50% - 10px);
-    }
-}
-
-@media (max-width: 768px) {
-    .post-card.featured-post,
-    .post-card.secondary-post {
-        flex-basis: 100%; /* 1 post por fila en móviles */
-        min-width: 100%;
-    }
-    .posts-row-featured, .posts-row-secondary {
-        gap: 15px; /* Reducir gap en móviles */
-    }
-    #blog-posts-grid {
-        gap: 15px;
-    }
-}
-
-/* Estilos para las etiquetas en un post individual */
-.post-tags {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #555; /* Un separador sutil, ajustado al tema oscuro */
-    font-size: 0.9em;
-}
-
-.post-tags strong {
-    color: #bbb; /* Color para el texto "Etiquetas:" */
-    margin-right: 10px;
-}
-
-.post-tags a {
-    color: #8af; /* Un color que destaque para los enlaces de etiquetas */
-    text-decoration: none;
-    margin-right: 8px;
-    padding: 4px 8px;
-    background-color: #3a3f51; /* Un fondo sutil para cada etiqueta */
-    border-radius: 4px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    display: inline-block; /* Para que el padding y margen funcionen bien */
-    margin-bottom: 5px; /* Espacio si las etiquetas se envuelven */
-}
-
-.post-tags a:hover {
-    background-color: #8af;
-    color: #201642; /* Color del fondo del sidebar para contraste */
-}
-
-/* Estilo para el título cuando se filtra por etiqueta */
-.tag-filter-title {
-    font-size: 1.8em;
-    color: #555; /* Un color claro que combine con tu tema oscuro */
-    margin-bottom: 25px;
-    text-align: center;
-    border-bottom: 2px solid #555;
-    padding-bottom: 15px;
-}
-
-/* Estilos para la sección de Posts Relacionados */
-.related-posts-section {
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 1px solid #555; /* Separador más pronunciado */
-}
-.related-posts-section h2 {
-    color: #ccc; /* Título de la sección */
-    margin-bottom: 20px;
-    font-size: 1.6em;
-}
-.related-posts-grid {
+@media (min-width: 1200px) {
+  .post-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive: 1 a 4 columnas */
-    gap: 20px;
+    grid-template-columns: 1fr 220px;
+    gap: 4rem;
+    max-width: 1100px;
+    align-items: start;
+  }
+  .post-body  { grid-column: 1; }
+  .post-aside { grid-column: 2; position: sticky; top: 96px; }
 }
 
-.related-post-card {
-    /* Hereda estilos de .post-card pero podemos sobreescribir o añadir */
-    background-color: #2a2f45; /* Un poco más oscuro que el article para diferenciar */
-    border: 1px solid #444;
+/* ── BODY TYPOGRAPHY ── */
+.post-body p {
+  margin-bottom: 1.6rem;
+  font-size: 1.05rem; line-height: 1.8;
+  color: oklch(85% 0.008 80);
+}
+.post-body p strong { color: var(--text); font-weight: 600; }
+
+.post-body h2, .post-body h3 {
+  font-family: var(--ff-display); letter-spacing: 0.01em;
+  color: var(--text); margin: 3rem 0 1.2rem;
+  scroll-margin-top: 88px;
+}
+.post-body h2 {
+  font-size: 1.65rem; font-weight: 700; line-height: 1.2;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+.post-body h3 {
+  font-size: 1.25rem; font-weight: 700;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.post-body h3::before {
+  content: ''; display: block; width: 4px; height: 1.1em;
+  background: var(--gold); flex-shrink: 0;
 }
 
-.related-post-card .post-card-title a {
-    color: #b0c4de; /* LightSteelBlue, para títulos en tarjetas relacionadas */
+.post-body ul, .post-body ol {
+  margin: 0 0 1.6rem 1.5rem; color: oklch(85% 0.008 80);
 }
-.related-post-card .post-card-title a:hover {
-    color: #8af;
+.post-body li { margin-bottom: 0.4rem; line-height: 1.7; font-size: 1.05rem; }
+
+.post-body blockquote {
+  margin: 2.5rem 0; padding: 2rem 2.5rem;
+  background: var(--surface);
+  border-left: 3px solid var(--gold);
+  position: relative;
 }
-.related-post-card .post-card-excerpt {
-    color: #aaa; /* Extracto un poco más tenue */
-    font-size: 0.85em;
+.post-body blockquote::before {
+  content: '\201C';
+  position: absolute; top: -0.3rem; left: 1.8rem;
+  font-family: var(--ff-display); font-size: 4rem;
+  color: var(--gold); opacity: 0.25; line-height: 1;
+  pointer-events: none;
 }
-.related-post-card .post-card-readmore {
-    background-color: #556b82; /* Un color diferente para el botón "Leer más" */
-}
-.related-post-card .post-card-readmore:hover {
-    background-color: #435567;
+.post-body blockquote p {
+  font-family: var(--ff-quote);
+  font-style: italic; font-size: 1.2rem;
+  line-height: 1.6; color: var(--text);
+  margin: 0;
 }
 
-/* Estilos para las etiquetas en un post individual */
+.post-body figure { margin: 3rem -1rem; }
+.post-body figure img {
+  width: 100%; display: block;
+  filter: saturate(0.8); transition: filter 0.3s;
+}
+.post-body figure img:hover { filter: saturate(1); }
+.post-body figcaption {
+  font-size: 0.78rem; color: var(--muted); text-align: center;
+  padding: 0.6rem 1rem 0; font-style: italic;
+}
+
+/* images inside post content */
+.post-body img {
+  max-width: 100%; height: auto; display: block;
+  filter: saturate(0.85); transition: filter 0.3s; margin: 1.5rem auto;
+}
+.post-body img:hover { filter: saturate(1); }
+
+/* videos */
+.post-body .video-responsive, .video-responsive {
+  position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+  margin: 2rem 0;
+}
+.post-body .video-responsive iframe, .video-responsive iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+}
+
+.post-body code {
+  background: var(--surface); padding: 0.15em 0.4em;
+  font-size: 0.88em; color: var(--teal);
+  font-family: 'DM Mono', 'Courier New', monospace;
+}
+
+/* pull quote accent */
+.pull-quote {
+  margin: 3.5rem 0; padding: 2.5rem 2rem;
+  background: oklch(12% 0.03 60 / 0.5);
+  border-top: 1px solid oklch(30% 0.08 68);
+  border-bottom: 1px solid oklch(30% 0.08 68);
+  text-align: center;
+}
+.pull-quote p {
+  font-family: var(--ff-quote);
+  font-size: clamp(1.1rem, 3vw, 1.5rem); font-style: italic;
+  font-weight: 700; line-height: 1.4;
+  color: var(--gold) !important; margin: 0 !important;
+}
+
+/* ── TAGS ── */
 .post-tags {
-    margin-top: 25px;
-    padding-top: 15px;
-    border-top: 1px solid #555; /* Un separador sutil */
-    font-size: 0.9em;
+  margin-top: 3.5rem; padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
 }
-
-.post-tags strong {
-    color: #bbb; /* O el color que prefieras para el texto "Etiquetas:" */
-}
-
 .post-tags a {
-    color: #8af; /* Un color que destaque para los enlaces de etiquetas */
-    text-decoration: none;
-    margin-right: 8px;
-    padding: 3px 6px;
-    background-color: #3a3f51; /* Un fondo sutil para cada etiqueta */
-    border-radius: 4px;
-    transition: background-color 0.2s ease, color 0.2s ease;
+  display: inline-block; padding: 0.35rem 0.8rem;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--muted); text-decoration: none;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em;
+  transition: border-color 0.2s, color 0.2s;
+}
+.post-tags a:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── SOCIAL ── */
+.post-social {
+  margin-top: 1.5rem;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.post-social span { font-size: 0.75rem; color: var(--muted); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.social-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  color: var(--muted); text-decoration: none;
+  font-size: 0.8rem; font-weight: 500;
+  padding: 0.4rem 0.8rem; border: 1px solid var(--border);
+  transition: color 0.2s, border-color 0.2s;
+}
+.social-link:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── AUTHOR BOX ── */
+.author-box {
+  margin-top: 3rem; padding: 2rem;
+  background: var(--surface); border: 1px solid var(--border);
+  display: flex; gap: 1.5rem; align-items: flex-start;
+}
+.author-box img { width: 56px; height: 56px; object-fit: contain; flex-shrink: 0; }
+.author-name { font-family: var(--ff-display); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.3rem; }
+.author-bio { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+/* ── COMMENTS ── */
+.comments-section { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.comments-section h2 {
+  font-family: var(--ff-display); font-size: 1.3rem; font-weight: 700;
+  color: var(--text); margin-bottom: 1.5rem;
 }
 
-.post-tags a:hover {
-    background-color: #8af;
-    color: #201642; /* Color del fondo del sidebar para contraste */
+/* ── SIDEBAR TOC ── */
+.post-aside .toc-label {
+  font-family: var(--ff-medieval);
+  font-size: 0.78rem; letter-spacing: 0.04em;
+  color: var(--muted); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.post-aside .toc-label::before { content: ''; width: 20px; height: 1px; background: var(--border); }
+.toc-list { list-style: none; }
+.toc-list li { border-left: 1px solid var(--border); }
+.toc-list a {
+  display: block; padding: 0.4rem 0.8rem;
+  color: var(--muted); text-decoration: none;
+  font-size: 0.8rem; line-height: 1.4;
+  transition: color 0.2s, border-color 0.2s;
+  border-left: 2px solid transparent; margin-left: -1px;
+}
+.toc-list a:hover, .toc-list a.active { color: var(--gold); border-color: var(--gold); }
+
+/* ══════════════════════════════════════════════════════
+   RELATED ARTICLES
+   ══════════════════════════════════════════════════════ */
+.related-section {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 5rem 2rem;
+}
+.related-inner { max-width: 1100px; margin: 0 auto; }
+.related-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+  display: flex; align-items: center; gap: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+.related-label::before { content: ''; width: 28px; height: 1px; background: var(--border); }
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1px; background: var(--border);
+}
+.rel-card {
+  background: var(--card); text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; transition: background 0.2s;
+}
+.rel-card:hover { background: var(--card-hover); }
+.rel-card img {
+  width: 100%; aspect-ratio: 16/9; object-fit: cover;
+  filter: saturate(0.7); transition: filter 0.3s;
+}
+.rel-card:hover img { filter: saturate(1); }
+.rel-card-body { padding: 1.2rem; flex: 1; }
+.rel-cat { font-family: var(--ff-medieval); font-size: 0.7rem; color: var(--rose); margin-bottom: 0.4rem; }
+.rel-title {
+  font-family: var(--ff-display); letter-spacing: 0.01em;
+  font-size: 0.95rem; font-weight: 700; line-height: 1.3;
+  color: var(--text); text-wrap: balance;
+}
+.rel-excerpt {
+  margin-top: 0.5rem; font-size: 0.78rem; color: var(--muted); line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
 
-/* Estilo para el título cuando se filtra por etiqueta */
-.tag-filter-title {
-    font-size: 1.8em;
-    color: #555; /* Un color claro que combine con tu tema oscuro */
-    margin-bottom: 20px;
-    text-align: center;
-    border-bottom: 2px solid #555;
-    padding-bottom: 10px;
+/* tag view heading */
+.tag-filter-heading {
+  font-family: var(--ff-display); font-size: 1.5rem; font-weight: 700;
+  color: var(--text); margin-bottom: 0.5rem;
+}
+.tag-filter-heading em { font-style: italic; color: var(--gold); }
+.tag-view-header {
+  padding: 4rem 2.5rem 0;
+  max-width: 1280px; margin: 0 auto;
 }
 
+/* ══════════════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════════════ */
+.site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  position: relative; z-index: 1;
+}
+.site-footer .footer-logo img { height: 32px; margin-bottom: 1rem; opacity: 0.7; }
+.site-footer p { color: var(--muted); font-size: 0.82rem; }
+.site-footer a { color: var(--gold); text-decoration: none; }
 
-#cusdis_thread{
-    width: 100%;
+/* ══════════════════════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════════════════════ */
+@keyframes heroEnter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes cardEnter {
+  0%   { opacity: 0; transform: translateY(32px) scale(0.97); filter: blur(4px); }
+  60%  { filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 
-/*CONTACTO DIRECTO*/
-.direct-contact-section {
-    margin-top: 25px;
-    margin-bottom: 25px;
-    padding: 15px;
-    background-color: #3a3f5e;
-    border-left: 3px solid #ffffff; /* Un color de acento, ajústalo a tu tema */
-    border-radius: 4px; /* Opcional: bordes redondeados */
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .grid-row.r-7-5, .grid-row.r-5-7, .grid-row.r-6-3-3 { grid-template-columns: 1fr; }
+  .grid-row.r-4-4-4 { grid-template-columns: 1fr 1fr; }
+  article.card.wide { flex-direction: column; }
+  article.card.wide .card-img { width: 100%; min-height: 220px; aspect-ratio: 16/9; }
 }
-
-.direct-contact-section p {
-    margin: 0;
-    font-size: 0.95em; /* Ajusta el tamaño si es necesario */
-}
-
-.direct-contact-section strong {
-    color: #838383; /* Color del texto "Contacto directo:" */
-}
-
-.direct-contact-section a {
-    margin: 0 5px; /* Espacio entre los enlaces */
-    /* color: #007bff;  Puedes definir un color específico para los enlaces aquí */
-}
-
-/* ... otros estilos ... */
-
-.direct-contact-section .contact-svg {
-    fill: white; /* Hereda el color del texto del strong (#838383 por tu CSS actual) */
-}
-.direct-contact-section .youtube-svg {
-    fill: #FF0000; /* Rojo Youtube */
-}
-.direct-contact-section .facebook-svg {
-    fill: #1877F2; /* Azul Facebook */
-}
-.direct-contact-section .instagram-svg {
-    fill: #C13584; /* Un color rosado/púrpura de Instagram */
-}
-
-/* ... otros estilos ... */
-
-/* Estilos para el sidebar del blog con miniaturas */
-#blog-sidebar ul li a {
-    display: flex; /* Permite alinear imagen y texto horizontalmente */
-    align-items: center; /* Centra verticalmente la imagen y el texto */
-    gap: 10px; /* Espacio entre la miniatura y el título del post */
-    padding-top: 8px; /* Ajusta el padding si es necesario */
-    padding-bottom: 8px; /* Ajusta el padding si es necesario */
-}
-
-#blog-sidebar ul li a img.sidebar-post-thumbnail {
-    width: 40px; /* Ancho de la miniatura */
-    height: 40px; /* Alto de la miniatura */
-    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
-    border-radius: 4px; /* Bordes redondeados para la miniatura (opcional) */
-    flex-shrink: 0; /* Evita que la imagen se encoja si el título es largo */
-}
-
-#blog-sidebar ul li a span.sidebar-post-title {
-    flex-grow: 1; /* Hace que el título ocupe el espacio restante */
-    /* Opcional: para manejar títulos muy largos y evitar que rompan el diseño */
-    /* white-space: nowrap; */ /* Descomentar si quieres que el título esté en una sola línea */
-    /* overflow: hidden; */ /* Descomentar si usas nowrap para ocultar el exceso */
-    /* text-overflow: ellipsis; */ /* Descomentar si usas nowrap para mostrar "..." al final */
-}
-
-/* Ajuste para el estado activo si es necesario */
-#blog-sidebar ul li a.active {
-    /* Puedes añadir estilos específicos aquí si el fondo por defecto no se ve bien con la imagen */
-    /* Por ejemplo, si el color de fondo del 'active' interfiere con la imagen */
-}
-
-
-/* --- ESTILOS RESPONSIVE --- */
-@media (max-width: 768px) {
-    body {
-        /* Ocultar sidebar por defecto en pantallas pequeñas */
-        padding-top: 60px;   /* Mantener espacio para el header fijo */
-        padding-left: 15px;  /* Padding simétrico a la izquierda */
-        padding-right: 15px; /* Padding simétrico a la derecha */
-        font-size: 16px; /* Ajustar tamaño de fuente base para móviles */
-        /* padding-bottom: 10px; Opcional, si necesitas espacio al final */
-        padding-bottom: 10px;
-    }
-    /* Asegurar que el padding del body en móviles sea consistente
-       y simétrico, incluso cuando la sidebar está oculta.
-       Esta regla es más específica que la 'body.sidebar-hidden' general. */
-    body.sidebar-hidden {
-        padding-left: 15px !important;  /* Mantenemos el padding simétrico */
-        padding-right: 15px !important; /* Mantenemos el padding simétrico */
-    }
-    header {
-        padding: 0 10px; /* Menos padding en el header */
-        /* Considerar apilar logo y botón si es necesario */
-        /* flex-direction: column; */
-        /* align-items: flex-start; */ /* O center */
-    }
-    header .logo a img {
-        height: 50px; /* Reducir tamaño del logo */
-        margin-top: 10px; /* Ajustar margen */
-    }
-    header .play-button a img {
-        height: 50px; /* Reducir tamaño del botón del juego */
-        margin-top: 10px; /* Ajustar margen */
-    }
-    aside {
-        /* Ocultar sidebar por defecto */
-        transform: translateX(-100%);
-        /* Opcional: Hacer que el sidebar sea un overlay en móvil */
-        position: fixed; /* Cambiar a fixed para que flote */
-        z-index: 1100; /* Asegurar que esté por encima del contenido */
-        box-shadow: 2px 0 5px rgba(0,0,0,0.2); /* Sombra para destacar */
-    }
-    /* Cuando la sidebar debe estar visible en móvil (no tiene la clase .sidebar-hidden el body) */
-    body:not(.sidebar-hidden) aside {
-        transform: translateX(0); /* Traerla de vuelta a la vista */
-    }
-    aside ul li a {
-        padding: 12px 5px; /* Aumentar un poco el padding para tap targets */
-    }
-    #toggle-sidebar {
-        /* Posicionar botón siempre visible en la esquina */
-        left: 5px; /* Pegado a la izquierda por defecto */
-        top: 70px; /* Un poco debajo del header, ajustado para más tamaño */
-        padding: 8px 12px; /* Aumentar padding para hacerlo más grande */
-        font-size: 1.2em;  /* Aumentar tamaño del icono/texto del botón */
-        background-color: #201642; /* Color de fondo más contrastado */
-        color: white; /* Color de texto del botón */
-        border: 1px solid #100a21; /* Borde ligeramente más oscuro */
-        /* El z-index: 950; ya está en la regla general y debería ser suficiente */
-    }
-    body:not(.sidebar-hidden) #toggle-sidebar {
-         /* Mover el botón cuando el sidebar está visible (overlay) */
-         left: 255px; /* Justo después del sidebar */
-    }
-    main {
-        /* Ajustar márgenes para centrar main después del padding-left del body */
-        width: 100%; /* Ocupará el 100% del área de contenido del body */
-        margin-top: 10px;    /* Margen vertical */
-        margin-bottom: 10px; /* Margen vertical */
-        margin-left: 0;      /* Main se alinea con el inicio del área de contenido del body */
-        margin-right: 0;     /* Main se extiende hasta el final del área de contenido del body */
-        padding: 15px;       /* Padding interno uniforme para el contenido de main */
-    }
-    main article h1 {
-        font-size: 1.8em; /* Ajustar tamaño de títulos */
-    }
-    main article{
-        padding: 10px;
-    }
-    main article img{
-        width: 100%;
-    }
-    .related-posts-grid {
-        /* En móviles, asegurar que las tarjetas de posts relacionados
-           no sean demasiado pequeñas. Podrían ir a 1 o 2 columnas. */
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
+@media (max-width: 600px) {
+  nav.site-nav { padding: 0 1.2rem; }
+  .nav-links { display: none; }
+  .blog-hero-content { padding: 0 1.2rem; }
+  .filter-inner { padding: 0 1.2rem; }
+  .blog-main { padding: 2.5rem 0 4rem; }
+  .grid-row.r-4-4-4 { grid-template-columns: 1fr; }
+  .section-label { padding: 0 1.2rem; }
+  .post-layout { padding: 2.5rem 1.2rem 4rem; }
+  .post-hero-inner { padding: 0 1.2rem; }
+  .related-section { padding: 3rem 1.2rem; }
+  .site-footer { padding: 2rem 1.2rem; }
+  .tag-view-header { padding: 2rem 1.2rem 0; }
+  .author-box { flex-direction: column; }
 }
