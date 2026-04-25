@@ -26,4 +26,4 @@ jobs:
             git checkout ${{ github.ref_name }}
             git pull --ff-only origin ${{ github.ref_name }}
             cd /opt/containers/josicovila-es
-            docker compose up -d --build
+            DOCKER_BUILDKIT=0 docker compose up -d --build
