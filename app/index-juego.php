@@ -805,8 +805,6 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
       .extras,
       .wrapperPergamino,
       .marcoAvatar,
-      .marcoMinimapa,
-      canvas.minimap,
       #time-arc-container,
       #level-envelope,
       #send-btn,
@@ -1715,6 +1713,57 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
         transition: width 1s ease !important;
       }
 
+      /* ══ MINIMAP ══ */
+      .marcoMinimapa {
+        display: block;
+        position: fixed !important;
+        left: 1.5rem !important;
+        top: calc(1.5rem + 78px + 0.8rem) !important;
+        z-index: 2199 !important;
+        width: 220px !important;
+        height: auto !important;
+        background: var(--jv-panel) !important;
+        border: 1px solid var(--jv-border-g) !important;
+        backdrop-filter: blur(16px) !important;
+        padding: 6px !important;
+        overflow: hidden !important;
+        box-shadow: 0 0 20px oklch(65% 0.15 68 / 0.06) !important;
+        box-sizing: border-box !important;
+      }
+      .jv-minimap__label {
+        font-family: var(--jv-ff-m) !important;
+        font-size: 0.52rem !important;
+        color: var(--jv-muted) !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        margin-bottom: 0.3rem !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.35rem !important;
+      }
+      .jv-minimap__label::before {
+        content: '' !important;
+        display: inline-block !important;
+        width: 5px !important;
+        height: 5px !important;
+        background: var(--jv-green) !important;
+        border-radius: 50% !important;
+        box-shadow: 0 0 5px var(--jv-green) !important;
+        animation: jv-pulse 2s ease-in-out infinite !important;
+      }
+      .minimap {
+        display: block !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        width: 208px !important;
+        height: 208px !important;
+        max-width: 208px !important;
+        max-height: 208px !important;
+        transform: none !important;
+        border: 1px solid oklch(28% 0.04 255 / 0.4) !important;
+      }
+
       /* ══ WORLD INFO (top-right) ══ */
       #jv-world-info {
         position: fixed !important;
@@ -2505,7 +2554,8 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
       body.jv-camera-intro #chat-container,
       body.jv-camera-intro #container,
       body.jv-camera-intro .wrapperLogros,
-      body.jv-camera-intro .logros {
+      body.jv-camera-intro .logros,
+      body.jv-camera-intro .marcoMinimapa {
         display: none !important;
       }
       body.jv-camera-intro .logos {
@@ -2597,6 +2647,14 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
         .jv-player-card__name { font-size: 0.78rem !important; }
         .jv-player-card__badge { font-size: 0.5rem !important; padding: 1px 3px !important; bottom: -5px !important; right: -5px !important; }
         .jv-player-card__xp-label { font-size: 0.55rem !important; }
+
+        .marcoMinimapa {
+          top: calc(1rem + 62px + 0.6rem) !important;
+          left: 0.8rem !important;
+          width: 170px !important;
+          padding: 5px !important;
+        }
+        .minimap { width: 160px !important; height: 160px !important; max-width: 160px !important; max-height: 160px !important; }
 
         #level-info {
           top: -9999px !important;
@@ -3238,8 +3296,10 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
         </div>
     </div>
     
-    <div class="marcoMinimapa" style="transform: translateX(-440px);"></div>
-    <canvas class="minimap nomovil" style="transform: translateX(-425px);"></canvas>
+    <div class="marcoMinimapa" aria-label="Minimapa del mundo">
+        <div class="jv-minimap__label">Minimapa</div>
+        <canvas class="minimap" width="208" height="208"></canvas>
+    </div>
     <div class="logros" style="transform: translateX(-1000px);">
         <div class="tituloLogros">LOGROS</div>
         <h1 class="logroAndar">Aprendiendo a moverse</h1>
@@ -3668,6 +3728,7 @@ $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punt
     </div>
 
 
+
 <script>
 /* Player card: updated by jvintro bridgeToGame() via window.jvUpdatePlayerCard */
 window.jvAvatarMap = {
@@ -3716,6 +3777,19 @@ window.jvUpdatePlayerCard = function(avatarKey) {
   if (xpBar.parentElement && typeof ResizeObserver !== 'undefined') {
     new ResizeObserver(sync).observe(xpBar.parentElement);
   }
+})();
+
+/* Level sync: mirror .nivel-actual text → #jv-player-level badge */
+(function(){
+  const badge    = document.getElementById('jv-player-level');
+  const nivelEl  = document.querySelector('.nivel-actual');
+  if (!badge || !nivelEl) return;
+  const syncLevel = () => {
+    const n = parseInt(nivelEl.textContent, 10);
+    if (Number.isFinite(n) && n > 0) badge.textContent = 'NIV.' + n;
+  };
+  syncLevel();
+  new MutationObserver(syncLevel).observe(nivelEl, { childList: true, characterData: true, subtree: true });
 })();
 </script>
 
