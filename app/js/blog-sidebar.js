@@ -1,5 +1,3 @@
-// c:\xampp-entero\htdocs\josicovila.es\js\blog-sidebar.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('toggle-sidebar');
     const searchInput = document.getElementById('blog-search-input'); // Nuevo

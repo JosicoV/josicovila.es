@@ -1,10 +1,4 @@
 <?php
-// c:\xampp-entero\htdocs\josicovila.es\api\blog\includes\ajax.search.php
-
-// Configuración inicial de errores (SOLO para desarrollo)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 // Establecer cabecera JSON
 header('Content-Type: application/json; charset=utf-8');
 

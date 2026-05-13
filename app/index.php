@@ -307,6 +307,7 @@ if (isset($_GET['post'])) {
     <li><a href="/">Blog</a></li>
     <li><a href="/mundo3D/">Mundo 3D</a></li>
     <li><a href="/blog/guia-nuevos-jugadores/">Guía</a></li>
+    <li><a href="/laboratorio-de-apps/">Laboratorio</a></li>
   </ul>
   <a class="nav-cta" href="/mundo3D/" aria-label="Jugar al Mundo 3D de Josico Vila">▶ Jugar ahora</a>
 </nav>

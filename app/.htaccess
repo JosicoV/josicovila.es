@@ -23,6 +23,9 @@
     RewriteRule ^blog/([^/]+)/?$    index.php?post=$1 [L,QSA]
     RewriteRule ^blog/?$            index.php         [L,QSA]
 
+    # Laboratorio de Apps
+    RewriteRule ^laboratorio-de-apps/?$ laboratorio-de-apps.php [L,QSA]
+
     # CV pages
     RewriteRule ^curriculum/es/?$ curriculum_es.html [L,NC]
     RewriteRule ^resume/en/?$     curriculum_en.html [L,NC]

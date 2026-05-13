@@ -1,7 +1,5 @@
 <?php
-// c:\wamp64\www\josicodist\api\BLOG_inc\includes\ajax.random-posts.php
-error_reporting(E_ALL);
-ini_set('display_errors', 0); // Desactivar en producción, activar para desarrollo
+ini_set('display_errors', 0);
 header('Content-Type: application/json; charset=utf-8');
 
 include_once __DIR__ . '/posts.estructura-datos.php';

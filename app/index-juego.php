@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <?php
-// Habilitar temporalmente la visualización de errores para depuración en producción
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require_once __DIR__ . '/vite-helpers.php';
 $viteAssets = vite('src/main.js'); // Llama a la función vite() pasando tu punto de entrada JS
 ?>
