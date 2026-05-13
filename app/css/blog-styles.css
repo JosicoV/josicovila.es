@@ -81,6 +81,40 @@ nav.site-nav {
 }
 .nav-cta:hover { opacity: 0.85; }
 
+/* ── Hamburger button (hidden on desktop) ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  outline-offset: 3px;
+}
+.nav-hamburger:hover { background: rgba(255,255,255,.07); }
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.2s;
+  transform-origin: center;
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* ══════════════════════════════════════════════════════
    READING PROGRESS BAR (post view)
    ══════════════════════════════════════════════════════ */
@@ -657,8 +691,33 @@ h1.post-title {
   article.card.wide .card-img { width: 100%; min-height: 220px; aspect-ratio: 16/9; }
 }
 @media (max-width: 600px) {
-  nav.site-nav { padding: 0 1.2rem; }
-  .nav-links { display: none; }
+  nav.site-nav {
+    padding: 0 1.2rem;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 56px;
+    align-content: flex-start;
+  }
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    order: 4;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    padding: 0.4rem 0 0.6rem;
+    border-top: 1px solid var(--border);
+  }
+  .nav-links.is-open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    padding: 0.6rem 0;
+    font-size: 0.9rem;
+    border-bottom: 1px solid color-mix(in oklch, var(--border) 60%, transparent);
+  }
+  .nav-links li:last-child a { border-bottom: none; }
   .blog-hero-content { padding: 0 1.2rem; }
   .filter-inner { padding: 0 1.2rem; }
   .blog-main { padding: 2.5rem 0 4rem; }

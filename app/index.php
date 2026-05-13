@@ -309,6 +309,9 @@ if (isset($_GET['post'])) {
     <li><a href="/blog/guia-nuevos-jugadores/">Guía</a></li>
     <li><a href="/laboratorio-de-apps/">Laboratorio</a></li>
   </ul>
+  <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links-menu">
+    <span></span><span></span><span></span>
+  </button>
   <a class="nav-cta" href="/mundo3D/" aria-label="Jugar al Mundo 3D de Josico Vila">▶ Jugar ahora</a>
 </nav>
 
@@ -678,6 +681,26 @@ if (tocList && postContent) {
     hs.forEach((heading) => obs.observe(heading));
   }
 }
+
+/* ── Hamburger nav toggle ── */
+(function () {
+  const btn   = document.querySelector('.nav-hamburger');
+  const links = document.querySelector('.nav-links');
+  if (!btn || !links) return;
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    btn.setAttribute('aria-label', !open ? 'Cerrar menú' : 'Abrir menú');
+    links.classList.toggle('is-open', !open);
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav.site-nav') && links.classList.contains('is-open')) {
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Abrir menú');
+      links.classList.remove('is-open');
+    }
+  });
+})();
 </script>
 <?php endif; ?>
 

@@ -1,0 +1,38 @@
+{
+  "apps": [
+    {
+      "id": "001",
+      "badge": "Espécimen áureo",
+      "name": "JosicoVila.es",
+      "subtitle": "Blog y Mundo 3D",
+      "stage": "free",
+      "layout": "featured",
+      "glow": "rgba(212,180,101,.18)",
+      "icon": "globe",
+      "description": "Mi proyecto web principal en el que llevo trabajando desde 2018 y siempre con la consigna en mente «Todo por y para mis sobrinos».",
+      "tags": ["PHP", "Three.js", "Web", "Multijugador"],
+      "meta": "Lanzado <b>2018</b> · v <b>9</b>",
+      "buttons": [
+        { "label": "Visitar", "url": "https://josicovila.es", "style": "gold" },
+        { "label": "GitHub", "url": "https://github.com/JosicoV/josicovila.es", "style": "github" }
+      ]
+    }
+    ,
+    {
+      "id": "002",
+      "name": "JosicoVila.com",
+      "subtitle": "Reproductor 3D (inglés)",
+      "stage": "free",
+      "layout": "normal",
+      "glow": "rgba(212,180,101,.14)",
+      "icon": "drop",
+      "description": "Reproductor con toda mi discografía en inglés con una esfera 3D que se deforma con el ritmo de la música.",
+      "tags": ["PHP", "Three.js", "Javascript Vanilla"],
+      "meta": "Lanzado <b>2020</b> · v <b>7</b>",
+      "buttons": [
+        { "label": "Visitar", "url": "https://josicovila.com", "style": "gold" },
+        { "label": "GitHub", "url": "https://github.com/JosicoV/josicovila.com", "style": "github" }
+      ]
+    }
+  ]
+}
