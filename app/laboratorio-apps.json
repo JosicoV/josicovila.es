@@ -66,5 +66,21 @@
         { "label": "GitHub", "url": "https://github.com/JosicoV/SEO-desktop-manager", "style": "github" }
       ]
     }
+    ,
+    {
+      "id": "005",
+      "name": "Route Partner",
+      "subtitle": "Tu compañero de rutas andando, corriendo…",
+      "stage": "hatch",
+      "layout": "normal",
+      "glow": "rgba(34,197,94,.14)",
+      "icon": "compass",
+      "description": "App móvil + web para control de rutas. Con la parte móvil grabas y tomas fotos de la ruta que luego se presentan en la web con visor 2D/3D y KPIs obtenidos.",
+      "tags": ["PHP", "Node.js", "MariaDB", "GPS", "3D"],
+      "meta": "Alfa · <b>2026</b>",
+      "buttons": [
+        { "label": "Visitar", "url": "https://routepartner.josicovila.com", "style": "gold" }
+      ]
+    }
   ]
 }
