@@ -682,7 +682,10 @@ if (tocList && postContent) {
   }
 }
 
-/* ── Hamburger nav toggle ── */
+</script>
+<?php endif; ?>
+
+<script>
 (function () {
   const btn   = document.querySelector('.nav-hamburger');
   const links = document.querySelector('.nav-links');
@@ -702,7 +705,5 @@ if (tocList && postContent) {
   });
 })();
 </script>
-<?php endif; ?>
-
 </body>
 </html>
