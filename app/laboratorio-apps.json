@@ -19,6 +19,22 @@
     }
     ,
     {
+      "id": "003",
+      "name": "Control de Horas",
+      "subtitle": "Registro de horas laborales",
+      "stage": "free",
+      "layout": "normal",
+      "glow": "rgba(79,70,229,.15)",
+      "icon": "timer",
+      "description": "Aplicación local para registrar y consultar horas de trabajo. Resumen diario, semanal y mensual, vista de impresión y exportación a CSV.",
+      "tags": ["Python", "Flask", "SQLite"],
+      "meta": "Lanzado <b>2026</b> · v <b>1</b>",
+      "buttons": [
+        { "label": "GitHub", "url": "https://github.com/JosicoV/control-de-horas", "style": "github" }
+      ]
+    }
+    ,
+    {
       "id": "002",
       "name": "JosicoVila.com",
       "subtitle": "Reproductor 3D (inglés)",
@@ -32,6 +48,22 @@
       "buttons": [
         { "label": "Visitar", "url": "https://josicovila.com", "style": "gold" },
         { "label": "GitHub", "url": "https://github.com/JosicoV/josicovila.com", "style": "github" }
+      ]
+    }
+    ,
+    {
+      "id": "004",
+      "name": "SEO Desktop Manager",
+      "subtitle": "Análisis SEO de escritorio",
+      "stage": "hatch",
+      "layout": "normal",
+      "glow": "rgba(16,185,129,.15)",
+      "icon": "compass",
+      "description": "Herramienta de escritorio para auditar el SEO de tus sitios. Rastrea páginas, puntúa su SEO y se integra con Google Search Console y PageSpeed Insights.",
+      "tags": ["Electron", "React", "SQLite", "Node.js"],
+      "meta": "v <b>0.1</b> · <b>2026</b>",
+      "buttons": [
+        { "label": "GitHub", "url": "https://github.com/JosicoV/SEO-desktop-manager", "style": "github" }
       ]
     }
   ]

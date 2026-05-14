@@ -539,7 +539,7 @@ function render_specimen(array $app, array $stage_meta, array $icons, string $gi
     </div>
     <div class="lab-hero-meta">
       <div class="row"><span>Coordenadas</span><b>48°N · Taller nocturno</b></div>
-      <div class="row"><span>Especímenes</span><b>06 catalogados</b></div>
+      <div class="row"><span>Especímenes</span><b><?= sprintf('%02d', $counts['all']) ?> catalogados</b></div>
       <div class="row"><span>Actualizado</span><b>Mayo · MMXXVI</b></div>
       <div class="row"><span>Custodio</span><b>Josico Vila</b></div>
     </div>
