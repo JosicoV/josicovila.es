@@ -25,5 +25,8 @@ jobs:
             git fetch origin
             git checkout ${{ github.ref_name }}
             git pull --ff-only origin ${{ github.ref_name }}
-            cd /opt/containers/josicovila-es
-            DOCKER_BUILDKIT=0 docker compose up -d --build
+            # El compose de produccion esta versionado en el repo.
+            # Fija name: josicovila-es, asi que el proyecto de compose es el
+            # mismo se invoque desde donde se invoque.
+            DOCKER_BUILDKIT=0 docker compose -f docker-compose.prod.yml up -d --build
+            docker compose -f docker-compose.prod.yml ps
