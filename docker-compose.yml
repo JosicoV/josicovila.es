@@ -1,3 +1,6 @@
+# Compose de DESARROLLO LOCAL: expone el sitio en http://localhost:8081.
+# Produccion usa docker-compose.prod.yml (Traefik + TLS, sin puertos publicados).
+
 services:
   web:
     build:

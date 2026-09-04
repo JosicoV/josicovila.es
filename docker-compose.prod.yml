@@ -1,0 +1,46 @@
+# Compose de PRODUCCION (VPS). No usar en local: para desarrollo esta docker-compose.yml.
+#
+# Se ejecuta desde dentro del repositorio clonado en el VPS:
+#   cd /opt/containers/josicovila-es/repo
+#   docker compose -f docker-compose.prod.yml up -d --build
+#
+# Los volumenes de datos apuntan a ../data (=/opt/containers/josicovila-es/data),
+# que vive fuera del repositorio y contiene los medios pesados.
+#
+# El nombre de proyecto se fija explicitamente para que no dependa del directorio
+# desde el que se invoque compose y siga gestionando el contenedor ya existente.
+
+name: josicovila-es
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: josicovila-es-web
+    restart: unless-stopped
+    volumes:
+      - ./app:/var/www/html
+      - ../data/cristal-musica:/var/www/html/CRISTAL/musica
+      - ../data/relatos-audios:/var/www/html/RELATOS/relatos/audios
+      - ../data/relatos-videos:/var/www/html/RELATOS/relatos/videos
+      - ../data/relatos-pdf:/var/www/html/RELATOS/relatos/pdf
+      - ../data/blog-media:/var/www/html/BLOG_media
+      - ../data/media-videos:/var/www/html/media/videos
+      - ../data/media-sounds:/var/www/html/media/sounds
+      - ../data/intro-video:/var/www/html/intro/video
+      - ../data/intro-mp3:/var/www/html/intro/mp3
+      - ../data/js-model:/var/www/html/js/model
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.routers.josicovila-es.rule=Host(`josicovila.es`) || Host(`www.josicovila.es`)
+      - traefik.http.routers.josicovila-es.entrypoints=websecure
+      - traefik.http.routers.josicovila-es.tls.certresolver=le
+      - traefik.http.services.josicovila-es.loadbalancer.server.port=80
+
+networks:
+  proxy:
+    external: true
