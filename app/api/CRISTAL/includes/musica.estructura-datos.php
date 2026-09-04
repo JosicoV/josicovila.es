@@ -3,8 +3,77 @@
     //Discos > [nombre, nombrejs, imagen, video, texto, canciones[]]
     //Canciones > [nombre, nombrejs, texto]
 
-    $disco = 
+    $disco =
 [
+    [
+        "nombre" => "Dragon Rage",
+        "nombrejs" => "DraRa",
+        "imagen" => "DragonRage.jpg",
+        "video" => "icono.mp4",
+        "texto" => "<p>Álbum temático sobre la vida de los dragones.</p>",
+        "canciones" => [
+            [
+                "nombre" => "Riding Oriental Winds",
+                "nombrejs" => "RoWin",
+                "texto" => "<p>Hora de volar muy lejos.</p>",
+                "ruta" => "DragonRage/1Riding_Oriental_Winds.mp3"
+            ],
+            [
+                "nombre" => "Blue Fire Nest",
+                "nombrejs" => "BLFne",
+                "texto" => "<p>El nido de la realeza.</p>",
+                "ruta" => "DragonRage/2Blue_fire_nest.mp3"
+            ],
+            [
+                "nombre" => "First Flight (Leaving the Nest)",
+                "nombrejs" => "FFLtn",
+                "texto" => "<p>Ha llegado el momento.</p>",
+                "ruta" => "DragonRage/3First_flight(leaving_the_nest).mp3"
+            ],
+            [
+                "nombre" => "The Night Glides",
+                "nombrejs" => "ThNgli",
+                "texto" => "<p>Volemos juntos.</p>",
+                "ruta" => "DragonRage/4the_night_glides.mp3"
+            ],
+            [
+                "nombre" => "Dracones Venandi",
+                "nombrejs" => "DraVe",
+                "texto" => "<p>Cazar con la familia y por la familia.</p>",
+                "ruta" => "DragonRage/5dracones_venandi.mp3"
+            ],
+            [
+                "nombre" => "Wind in My Wings",
+                "nombrejs" => "WiinMW",
+                "texto" => "<p>El placer de volar.</p>",
+                "ruta" => "DragonRage/6Wind_in_my wings.mp3"
+            ],
+            [
+                "nombre" => "Flying Through Clouds",
+                "nombrejs" => "FlThclo",
+                "texto" => "<p>Hora de relajarse.</p>",
+                "ruta" => "DragonRage/7Flying_through_clouds.mp3"
+            ],
+            [
+                "nombre" => "Dragon Rage",
+                "nombrejs" => "DrageGon",
+                "texto" => "<p>No me hagas enfadar.</p>",
+                "ruta" => "DragonRage/8Dragon_Rage.mp3"
+            ],
+            [
+                "nombre" => "Learning To Fly",
+                "nombrejs" => "LeaTFl",
+                "texto" => "<p>La primera vez.</p>",
+                "ruta" => "DragonRage/9_learning_to_fly.mp3"
+            ],
+            [
+                "nombre" => "Drakonian Warcry",
+                "nombrejs" => "Drawar",
+                "texto" => "<p>¿Estás preparado?</p>",
+                "ruta" => "DragonRage/10Drakonian_Warcry.mp3"
+            ],
+        ] // cierra canciones
+    ], //Cierra Dragon Rage
     [
         "nombre" => "Black & White",
         "nombrejs" => "Bawhi",
